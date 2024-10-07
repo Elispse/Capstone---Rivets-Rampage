@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7afff72ec59f4c145b254d6795a030f4
+guid: 7571b575a9c61c14e949a655038b9283
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DefaultPlayer_Up_0
+      name: DefaultPlayer_UpRightRun_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8b6206c1871af449b95e1b588822af1
-      internalID: -703844661
+      spriteID: 5903230db581bf04bb6c7bfb754702ab
+      internalID: 690661106
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DefaultPlayer_Up_1
+      name: DefaultPlayer_UpRightRun_1
       rect:
         serializedVersion: 2
         x: 16
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 863bdd246ade0244d9539541d2cb3423
-      internalID: -16163166
+      spriteID: aec843ed2cb2d744eb4cec0251ffbed1
+      internalID: 856959891
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DefaultPlayer_Up_2
+      name: DefaultPlayer_UpRightRun_2
       rect:
         serializedVersion: 2
         x: 32
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ebac2cbeb03da447bf1468906a7d5b4
-      internalID: -1898880844
+      spriteID: 3f89867f373b74947b1947d7fecffa3b
+      internalID: -2076346136
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DefaultPlayer_Up_3
+      name: DefaultPlayer_UpRightRun_3
       rect:
         serializedVersion: 2
         x: 48
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7abccc9b6e98ea4a8a7e6b728736e35
-      internalID: 610435393
+      spriteID: 3cd8775bbcf9eb7489d58b0e0411e7f9
+      internalID: 1132252052
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      DefaultPlayer_Up_0: -703844661
-      DefaultPlayer_Up_1: -16163166
-      DefaultPlayer_Up_2: -1898880844
-      DefaultPlayer_Up_3: 610435393
+      DefaultPlayer_UpRightRun_0: 690661106
+      DefaultPlayer_UpRightRun_1: 856959891
+      DefaultPlayer_UpRightRun_2: -2076346136
+      DefaultPlayer_UpRightRun_3: 1132252052
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

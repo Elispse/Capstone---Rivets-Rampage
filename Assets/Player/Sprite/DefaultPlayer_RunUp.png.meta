@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f6bd001300fc1d946bcd1d1abcfed024
+guid: 8eaea46b7855d174e85c8a30418c54f3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Default_RunDown_0
+      name: DefaultPlayer_RunUp_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 622d92222e22da4498663c41e5c2fbff
-      internalID: -285572401
+      spriteID: 396574ee21f76594f9edba0d8b9f3379
+      internalID: 437315614
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Default_RunDown_1
+      name: DefaultPlayer_RunUp_1
       rect:
         serializedVersion: 2
         x: 16
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a9a53b707883434aabbbfe287b21fc2
-      internalID: 2118595191
+      spriteID: b855da9659a07df498e18a5510dc5e2d
+      internalID: -687385954
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Default_RunDown_2
+      name: DefaultPlayer_RunUp_2
       rect:
         serializedVersion: 2
         x: 32
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3517acc862884dc45a0dde2e140efa47
-      internalID: -2086738087
+      spriteID: ee424abacc5397941b407580feee7e65
+      internalID: -1835424728
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Default_RunDown_3
+      name: DefaultPlayer_RunUp_3
       rect:
         serializedVersion: 2
         x: 48
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a477bd541243b14fb1cd710d1264cfe
-      internalID: -1699603020
+      spriteID: dc0a4c7d292f0f84287c7752fe3c3ee6
+      internalID: 1781059446
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Default_RunDown_0: -285572401
-      Default_RunDown_1: 2118595191
-      Default_RunDown_2: -2086738087
-      Default_RunDown_3: -1699603020
+      DefaultPlayer_RunUp_0: 437315614
+      DefaultPlayer_RunUp_1: -687385954
+      DefaultPlayer_RunUp_2: -1835424728
+      DefaultPlayer_RunUp_3: 1781059446
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
