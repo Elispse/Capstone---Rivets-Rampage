@@ -25,8 +25,8 @@ public class BasicAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int startAngle = 0;
-        int finishAngle = 360;
+        int startAngle = -75;
+        int finishAngle = 75;
         int increment = (int)(finishAngle / segments);
         Vector2 targetPos = Vector2.zero;
         Vector2 endPos;
@@ -38,26 +38,19 @@ public class BasicAI : MonoBehaviour
             endPos = new Vector2(transform.position.x + targetPos.x, transform.position.y + targetPos.y);
 
             RaycastHit2D hit2D = Physics2D.Raycast(transform.position, rayDirection2D, distance);
-            if (hit2D.collider != null)
+            if (hit2D.collider)
             {
                 Debug.DrawLine(transform.position, endPos, Color.green);
-                Move();
+                animator.SetBool("isFollowing", true);
             }
             else
             {
                 Debug.DrawLine(transform.position, endPos, Color.red);
             }
         }
-        if (agent.remainingDistance <= 0.5)
+        if (animator.GetBool("isFollowing"))
         {
-            animator.SetBool("isWalking", false);
-        }
-        else
-        {
-            animator.SetFloat("LastX", agent.velocity.x);
-            animator.SetFloat("LastY", agent.velocity.y);
-            animator.SetFloat("CurX", agent.velocity.x);
-            animator.SetFloat("CurY", agent.velocity.y);
+            Move();
         }
     }
 
@@ -65,6 +58,8 @@ public class BasicAI : MonoBehaviour
     {
         animator.SetBool("isWalking", true);
         agent.SetDestination(target.position);
+        animator.SetFloat("CurX", agent.velocity.x);
+        animator.SetFloat("CurY", agent.velocity.y);
     }
 
     private void Wander()
