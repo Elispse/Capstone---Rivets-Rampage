@@ -9,5 +9,5 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] protected string tagName;
 
     public abstract bool Use();
-    public abstract void Attack();
+    public abstract void Attack(Animator animator);
 }

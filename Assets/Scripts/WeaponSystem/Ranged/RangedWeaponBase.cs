@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedWeaponBase : MonoBehaviour
+public class RangedWeaponBase : WeaponBase
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    public override void Attack(Animator animator)
     {
-        
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override bool Use()
     {
-        
+        throw new System.NotImplementedException();
     }
 }

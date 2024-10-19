@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeWeaponBase : MonoBehaviour
+public class MeleeWeaponBase : WeaponBase
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public override void Attack(Animator animator)
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public override bool Use()
     {
-        
+        throw new System.NotImplementedException();
     }
 }

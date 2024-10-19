@@ -139,8 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 200ca6b54838c194caf9a825e93b3e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 399741237}
   segments: 10
+  navMeshSurface: {fileID: 362158804}
 --- !u!195 &120190945
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -159,7 +159,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1.4375
+  m_Height: 1.41
   m_BaseOffset: 0.71875
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -292,11 +292,6 @@ Transform:
 --- !u!1 &399741231 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7403730196419939109, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
-  m_PrefabInstance: {fileID: 1082485016}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &399741237 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7625989474597631073, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
   m_PrefabInstance: {fileID: 1082485016}
   m_PrefabAsset: {fileID: 0}
 --- !u!70 &399741238
