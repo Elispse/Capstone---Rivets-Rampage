@@ -17,6 +17,7 @@ public class BasicAI : MonoBehaviour, IDamagable
     private Utility utility = new Utility();
     private bool wanderSpot = true;
     private float health = 10;
+    private float rayDirection = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -36,10 +37,29 @@ public class BasicAI : MonoBehaviour, IDamagable
         int increment = (int)(finishAngle / segments);
         Vector2 targetPos = Vector2.zero;
         Vector2 endPos;
-
-        for (int i = startAngle; i < finishAngle; i += increment)
+        if (animator.GetBool("isWalking"))
         {
-            Vector2 rayDirection2D = (Quaternion.Euler(0, 0, i) * transform.up).normalized;
+            if (agent.velocity.x >= 0.75)
+            {
+                rayDirection = -90;
+            }
+            if (agent.velocity.x <= -0.75)
+            {
+                rayDirection = 90;
+            }
+            if (agent.velocity.y <= -0.75)
+            {
+                rayDirection = -180;
+            }
+            if (agent.velocity.y >= 0.75)
+            {
+                rayDirection = 0;
+            }
+        }
+
+            for (int i = startAngle; i < finishAngle; i += increment)
+        {
+            Vector2 rayDirection2D = (Quaternion.Euler(0, 0, i + rayDirection) * transform.up).normalized;
             targetPos = rayDirection2D * distance;
             endPos = new Vector2(transform.position.x + targetPos.x, transform.position.y + targetPos.y);
 
