@@ -22,7 +22,6 @@ public class MeleeWeaponBase : WeaponBase
             if ((tagName == "" || collider.gameObject.CompareTag(tagName)) && collider.gameObject.TryGetComponent(out IDamagable damagable))
             {
                 damagable.ApplyDamage(damage);
-
             }
         }
     }

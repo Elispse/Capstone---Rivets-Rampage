@@ -57,16 +57,16 @@ public class BasicAI : MonoBehaviour, IDamagable
             }
         }
 
-            for (int i = startAngle; i < finishAngle; i += increment)
+        for (int i = startAngle; i < finishAngle; i += increment)
         {
             Vector2 rayDirection2D = (Quaternion.Euler(0, 0, i + rayDirection) * transform.up).normalized;
             targetPos = rayDirection2D * distance;
             endPos = new Vector2(transform.position.x + targetPos.x, transform.position.y + targetPos.y);
-
-            RaycastHit2D hit2D = Physics2D.Raycast(transform.position, rayDirection2D, distance);
+            
+            RaycastHit2D hit2D = Physics2D.Raycast(transform.position, rayDirection2D, distance, LayerMask.GetMask("Player"));
             if (hit2D && hit2D.rigidbody.CompareTag("Player"))
             {
-                Debug.DrawLine(transform.position, endPos, Color.green);
+                Debug.DrawRay(transform.position, endPos, Color.green);
                 target = hit2D.collider.gameObject.transform;
                 animator.SetBool("isFollowing", true);
             }

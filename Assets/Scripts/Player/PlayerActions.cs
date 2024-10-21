@@ -10,12 +10,13 @@ public class PlayerActions : MonoBehaviour, IDamagable
 
     public void ApplyDamage(float damage)
     {
-        
+
     }
 
     public void Fire(InputAction.CallbackContext context)
     {
-            //weapon.Use(animator);
-            weapon.Attack();
+        //weapon.Use(animator);
+        weapon.Attack();
+        
     }
 }
