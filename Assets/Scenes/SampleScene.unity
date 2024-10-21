@@ -425,7 +425,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   finalPos: {x: 0, y: 0, z: 0}
-  attackRadius: 1
+  attackRadius: 0.6
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

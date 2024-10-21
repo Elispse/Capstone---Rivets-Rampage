@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class MeleeWeaponBase : WeaponBase
 {
@@ -8,12 +9,14 @@ public class MeleeWeaponBase : WeaponBase
     [SerializeField, Range(0, 5)] public float attackRadius = 1;
     public override void Attack()
     {
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 dir = (Quaternion.Euler(mousePos.x, mousePos.y, 0) * transform.up);
-        Vector3 cursorVector = dir;
+        Vector3 cursorPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+        Vector3 playerPos = transform.position;
+        Vector3 playerToCursor = cursorPos - playerPos;
+        Vector3 dir = playerToCursor.normalized;
+        Vector3 cursorVector = dir * 1.25f;
         finalPos = transform.position + cursorVector;
 
-        var colliders = Physics2D.OverlapCircleAll(finalPos, 2, layerMask);
+        var colliders = Physics2D.OverlapCircleAll(finalPos, 1, layerMask);
         foreach (var collider in colliders)
         {
             if ((tagName == "" || collider.gameObject.CompareTag(tagName)) && collider.gameObject.TryGetComponent(out IDamagable damagable))
