@@ -5,12 +5,12 @@ using UnityEngine;
 public class RangedWeaponBase : WeaponBase
 {
     
-    public override void Attack(Animator animator)
+    public override void Attack()
     {
         throw new System.NotImplementedException();
     }
 
-    public override bool Use()
+    public override bool Use(Animator animator)
     {
         throw new System.NotImplementedException();
     }

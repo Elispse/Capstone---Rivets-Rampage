@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BasicAI : MonoBehaviour
+public class BasicAI : MonoBehaviour, IDamagable
 {
     Transform target;
     [SerializeField] int segments;
@@ -16,6 +16,7 @@ public class BasicAI : MonoBehaviour
     private Animator animator;
     private Utility utility = new Utility();
     private bool wanderSpot = true;
+    private float health = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +60,7 @@ public class BasicAI : MonoBehaviour
         {
             Follow();
         }
+        Gizmos.color = Color.red;
     }
 
     private void Follow()
@@ -92,5 +94,14 @@ public class BasicAI : MonoBehaviour
         agent.SetDestination(utility.GetRandomDestination(navData.sourceBounds));
         wanderSpot = true;
         animator.SetBool("isWalking", true);
+    }
+
+    public void ApplyDamage(float damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
