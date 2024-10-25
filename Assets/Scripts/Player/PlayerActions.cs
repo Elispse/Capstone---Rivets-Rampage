@@ -17,6 +17,6 @@ public class PlayerActions : MonoBehaviour, IDamagable
     {
         //weapon.Use(animator);
         weapon.Attack();
-        
+        //animator.SetBool("hasAttacked", true);
     }
 }
