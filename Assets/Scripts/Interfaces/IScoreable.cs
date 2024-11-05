@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IDamagable
+public interface IScoreable
 {
-	void ApplyDamage(float damage);
+    public void AddScore(int score);
 }

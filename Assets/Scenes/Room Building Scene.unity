@@ -1135,14 +1135,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3861417883469989009, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
-      propertyPath: weapons.Array.size
-      value: 2
+    - target: {fileID: 167170184009733182, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
+      propertyPath: Health
+      value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 5480875517217362322, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
+    - target: {fileID: 167170184009733182, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 981426138}
     - target: {fileID: 7403730196419939109, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1190,8 +1190,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7403730196419939109, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 981426138}
   m_SourcePrefab: {fileID: 100100000, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
+--- !u!1 &981426126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7403730196419939109, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
+  m_PrefabInstance: {fileID: 981426125}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &981426138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981426126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e39054a64d2b1c4fb79824bb2f248cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  attackRate: 1
+  animationTriggerName: 
+  tagName: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  finalPos: {x: 0, y: 0, z: 0}
+  attackRadius: 1
 --- !u!1 &998266865
 GameObject:
   m_ObjectHideFlags: 0

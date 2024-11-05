@@ -11,14 +11,14 @@ GameObject:
   - component: {fileID: 7625989474597631073}
   - component: {fileID: 4812719108946441560}
   - component: {fileID: 1319008299565351003}
-  - component: {fileID: 3861417883469989009}
   - component: {fileID: 1671994720070350003}
+  - component: {fileID: 167170184009733182}
   - component: {fileID: 376402071086357753}
   - component: {fileID: 5480875517217362322}
   - component: {fileID: 8069027788241322665}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,7 +136,19 @@ MonoBehaviour:
     m_ActionId: 64a917b3-08ff-42ab-b44a-9c773b5863c8
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 167170184009733182}
+        m_TargetAssemblyTypeName: PlayerActions, Assembly-CSharp
+        m_MethodName: Fire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: b72d3314-7c64-41ab-a2f3-a1a9b281c1e7
     m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -179,26 +191,15 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 521cef52-e801-4e1a-9476-2356ee450871
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 71f80511-6e34-4ab0-886b-8c3831c209e0
+    m_ActionName: Player/SwapWeapons[/Keyboard/1,/Keyboard/2]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &3861417883469989009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7403730196419939109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cba8a1706c161714f946e3d193d5858f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Health: 0
-  weapon: {fileID: 0}
-  animator: {fileID: 0}
 --- !u!114 &1671994720070350003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +213,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 500
+--- !u!114 &167170184009733182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7403730196419939109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba8a1706c161714f946e3d193d5858f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 0
+  weapon: {fileID: 915061733537488096, guid: c6e8b4e46e7e6d141ace3b525ff4eb0a, type: 3}
+  weapons: []
+  animator: {fileID: 0}
 --- !u!70 &376402071086357753
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -273,7 +290,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &8069027788241322665
 Animator:
   serializedVersion: 5

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerActions : MonoBehaviour, IDamagable
+public class PlayerActions : MonoBehaviour, IDamagable, IScoreable
 {
     [SerializeField] float Health;
     [SerializeField] WeaponBase weapon;
-    [SerializeField] WeaponBase[] weapons;
+    [SerializeField] public WeaponBase[] weapons;
     [SerializeField] protected Animator animator;
     private int currentWeapon = 0;
 
@@ -15,7 +15,6 @@ public class PlayerActions : MonoBehaviour, IDamagable
     {
         animator = GetComponent<Animator>();
         Health = 6;
-
     }
 
     public void ApplyDamage(float damage)
@@ -25,7 +24,7 @@ public class PlayerActions : MonoBehaviour, IDamagable
 
     public void Fire(InputAction.CallbackContext context)
     {
-        weapon.Use(animator);
+        //weapon.Use(animator);
         weapon.Attack();
         //animator.SetBool("hasAttacked", true);
     }
@@ -41,5 +40,10 @@ public class PlayerActions : MonoBehaviour, IDamagable
             currentWeapon = 0;
         }
         weapon = weapons[currentWeapon];
+    }
+
+    public void AddScore(int score)
+    {
+        //
     }
 }
