@@ -1,4 +1,4 @@
-using System.Collections; 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,32 +9,47 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private Animator animator;
+    [SerializeField] private InputActionReference pointerPos;
+    private Vector2 mousePos;
+    private WeaponParent weaponParent;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        weaponParent = GetComponentInChildren<WeaponParent>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         rb.velocity = moveInput * moveSpeed * Time.deltaTime;
+        mousePos = GetPointerInput();
+        weaponParent.pointerPosition = mousePos;
+        animator.SetFloat("CurX", mousePos.x);
+        animator.SetFloat("CurY", mousePos.y);
     }
 
     public void Move(InputAction.CallbackContext context)
     {
         animator.SetBool("isWalking", true);
 
-        if(context.canceled)
+        if (context.canceled)
         {
             animator.SetBool("isWalking", false);
-            animator.SetFloat("LastX", moveInput.x);
-            animator.SetFloat("LastY", moveInput.y);
+            //    animator.SetFloat("LastX", moveInput.x);
+            //    animator.SetFloat("LastY", moveInput.y);
         }
         moveInput = context.ReadValue<Vector2>();
-        animator.SetFloat("CurX", moveInput.x);
-        animator.SetFloat("CurY", moveInput.y);
+        //animator.SetFloat("CurX", moveInput.x);
+        //animator.SetFloat("CurY", moveInput.y);
+    }
+
+    private Vector2 GetPointerInput()
+    {
+        Vector3 mousePos = pointerPos.action.ReadValue<Vector2>();
+        mousePos.z = Camera.main.nearClipPlane;
+        return Camera.main.ScreenToWorldPoint(mousePos);
     }
 }

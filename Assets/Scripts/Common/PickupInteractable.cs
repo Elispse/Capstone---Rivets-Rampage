@@ -16,7 +16,6 @@ public class PickupInteractable : MonoBehaviour, IInteractable
     [SerializeField] float value = 1;
     [SerializeField] bool valueOverTime = false;
     [SerializeField] bool destroyOnPickup = true;
-    [SerializeField] GameObject pickupPrefab = null;
 
     private void Start()
     {
