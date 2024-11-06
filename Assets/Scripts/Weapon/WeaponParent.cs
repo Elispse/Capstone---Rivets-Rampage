@@ -7,13 +7,21 @@ public class WeaponParent : MonoBehaviour
     public SpriteRenderer characterRenderer, weaponRenderer;
     public Vector2 pointerPosition { get; set; }
     private Vector3 spriteScale;
+    private WeaponBase weaponBase;
+
+    private void Awake()
+    {
+        weaponBase = GetComponentInChildren<WeaponBase>();
+        weaponRenderer = GetComponentInChildren<SpriteRenderer>();
+    }
 
     private void Update()
     {
         Vector2 direction = (pointerPosition-(Vector2)transform.position).normalized;
         transform.right = direction;
-
+        weaponBase.PointerPosition = pointerPosition;
         Vector2 scale = transform.localScale;
+
         if (direction.x < 0)
         {
             scale.y = -1;
