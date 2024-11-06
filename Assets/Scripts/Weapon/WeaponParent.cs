@@ -8,7 +8,6 @@ public class WeaponParent : MonoBehaviour
     public Vector2 pointerPosition { get; set; }
     private Vector3 spriteScale;
 
-    
     private void Update()
     {
         Vector2 direction = (pointerPosition-(Vector2)transform.position).normalized;

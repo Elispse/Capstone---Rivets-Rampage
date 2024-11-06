@@ -5,5 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerActions : MonoBehaviour
 {
-    
+    [SerializeField] GameObject[] weapons;
+    private WeaponBase weapon;
+
 }
