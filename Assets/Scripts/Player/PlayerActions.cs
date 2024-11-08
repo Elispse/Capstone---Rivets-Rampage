@@ -8,7 +8,8 @@ public class PlayerActions : MonoBehaviour
 {
     [SerializeField] List<GameObject> weapons;
     private WeaponBase weapon;
-    private WeaponParent weaponParent;
+    [SerializeField]
+    private GameObject weaponParent;
     private bool held;
 
     private void Start()

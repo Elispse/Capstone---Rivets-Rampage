@@ -169,68 +169,6 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!1001 &240255339
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 420850044}
-    m_Modifications:
-    - target: {fileID: 1337240363540864950, guid: 32dce609343e66149a0f6ee04c533005, type: 3}
-      propertyPath: m_Name
-      value: Wrench
-      objectReference: {fileID: 0}
-    - target: {fileID: 8003680149476033738, guid: 32dce609343e66149a0f6ee04c533005, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 8003680149476033738, guid: 32dce609343e66149a0f6ee04c533005, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 8003680149476033738, guid: 32dce609343e66149a0f6ee04c533005, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8003680149476033738, guid: 32dce609343e66149a0f6ee04c533005, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8003680149476033738, guid: 32dce609343e66149a0f6ee04c533005, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8003680149476033738, guid: 32dce609343e66149a0f6ee04c533005, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8003680149476033738, guid: 32dce609343e66149a0f6ee04c533005, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8003680149476033738, guid: 32dce609343e66149a0f6ee04c533005, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8003680149476033738, guid: 32dce609343e66149a0f6ee04c533005, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8003680149476033738, guid: 32dce609343e66149a0f6ee04c533005, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 32dce609343e66149a0f6ee04c533005, type: 3}
---- !u!4 &240255340 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8003680149476033738, guid: 32dce609343e66149a0f6ee04c533005, type: 3}
-  m_PrefabInstance: {fileID: 240255339}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &275090687
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,6 +253,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: NailGun
       objectReference: {fileID: 0}
+    - target: {fileID: 5558246918706365527, guid: 448b6f7bf2b12a341870f0723b14743d, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: -937115541, guid: b08e45742abe20740bbfb9048bdedf1c, type: 3}
+    - target: {fileID: 5558246918706365527, guid: 448b6f7bf2b12a341870f0723b14743d, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 9100000, guid: 274a0eb3c5700444ba99b11280ee7bba, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -351,7 +297,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1868992577}
-  - {fileID: 240255340}
   m_Father: {fileID: 981426136}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &420850045
@@ -1311,8 +1256,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 167170184009733182, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
+      propertyPath: weaponParent
+      value: 
+      objectReference: {fileID: 420850043}
+    - target: {fileID: 167170184009733182, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
       propertyPath: weapons.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 167170184009733182, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
       propertyPath: weapons.Array.data[0]
@@ -2810,6 +2759,18 @@ PrefabInstance:
     - target: {fileID: 708485392205921281, guid: 16d195ed89de87945a5795c71825f167, type: 3}
       propertyPath: m_Name
       value: Sparkplug
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955567752203308889, guid: 16d195ed89de87945a5795c71825f167, type: 3}
+      propertyPath: m_Mass
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955567752203308889, guid: 16d195ed89de87945a5795c71825f167, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955567752203308889, guid: 16d195ed89de87945a5795c71825f167, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7007764689130255705, guid: 16d195ed89de87945a5795c71825f167, type: 3}
       propertyPath: m_LocalPosition.x

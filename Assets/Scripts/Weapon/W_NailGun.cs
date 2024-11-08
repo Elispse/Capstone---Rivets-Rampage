@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class W_NailGun : WeaponBase
@@ -8,6 +9,7 @@ public class W_NailGun : WeaponBase
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform firePoint;
     [SerializeField, Range(1, 50)] int fireForce = 20;
+    private GameObject bullet;
     private float weaponSpeed;
     
 
@@ -21,10 +23,9 @@ public class W_NailGun : WeaponBase
     {
         Vector3 attackDirection = (PointerPosition - (Vector2)this.gameObject.transform.position).normalized;
         var finalPos = this.gameObject.transform.position + attackDirection;
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         bullet.GetComponent<Projectile>().Damage = damage;
         bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.right * fireForce, ForceMode2D.Impulse);
-        
     }
 
     public override bool Use()
