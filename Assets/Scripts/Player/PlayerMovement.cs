@@ -12,7 +12,11 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private Vector2 mousePos;
     private WeaponParent weaponParent;
+    [SerializeField]
+    private PlayerActions playerActions;
     private bool movementChange = false;
+    private bool change = false;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -28,8 +32,22 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = moveInput * moveSpeed * Time.deltaTime;
         mousePos = GetPointerInput();
         weaponParent.pointerPosition = mousePos;
-        animator.SetFloat("CurX", mousePos.x);
-        animator.SetFloat("CurY", mousePos.y);
+        if (playerActions.held)
+        {
+            movementChange = true;
+        }
+        else if (!playerActions.held && !change && movementChange)
+        {
+            StartCoroutine(movementChangeCR(3));
+            change = true;
+        }
+        if (movementChange)
+        {
+            animator.SetFloat("CurX", -(this.transform.position.x - mousePos.x));
+            animator.SetFloat("CurY", -(this.transform.position.y - mousePos.y));
+            animator.SetFloat("LastX", -(this.transform.position.x - mousePos.x));
+            animator.SetFloat("LastY", -(this.transform.position.y - mousePos.y));
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -39,12 +57,19 @@ public class PlayerMovement : MonoBehaviour
         if (context.canceled)
         {
             animator.SetBool("isWalking", false);
-            //    animator.SetFloat("LastX", moveInput.x);
-            //    animator.SetFloat("LastY", moveInput.y);
+            if (!movementChange)
+            {
+                animator.SetFloat("LastX", moveInput.x);
+                animator.SetFloat("LastY", moveInput.y);
+            }
         }
+
         moveInput = context.ReadValue<Vector2>();
-        //animator.SetFloat("CurX", moveInput.x);
-        //animator.SetFloat("CurY", moveInput.y);
+        if (!movementChange)
+        {
+            animator.SetFloat("CurX", moveInput.x);
+            animator.SetFloat("CurY", moveInput.y);
+        }
     }
 
     private Vector2 GetPointerInput()
@@ -58,5 +83,6 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         movementChange = false;
+        change = false;
     }
 }

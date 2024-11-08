@@ -48,6 +48,6 @@ public class PlayerActions : MonoBehaviour
 
     public void SwapWeapon()
     {
-
+        
     }
 }
