@@ -4,17 +4,19 @@ using UnityEngine;
 
 public abstract class WeaponBase : MonoBehaviour
 {
+    public enum WeaponType
+    {
+        Melee,
+        Ranged
+    }
     [SerializeField] protected float damage = 1;
     [SerializeField] protected float attackRate = 1;
     [SerializeField] protected Animator WeaponAnimator;
     [SerializeField] protected string animationTriggerName;
     [SerializeField] protected string tagName;
     [SerializeField] protected LayerMask layerMask = Physics.AllLayers;
-    [SerializeField] protected enum WeaponType
-    {
-        Melee,
-        Ranged
-    }
+    [SerializeField] public WeaponType weaponType;
+    
 
     public Vector2 PointerPosition { get; set; }
 

@@ -16,12 +16,14 @@ public class BasicAI : MonoBehaviour, IDamagable
     private Animator animator;
     private Utility utility = new Utility();
     private bool wanderSpot = true;
+    [SerializeField]
     private float health = 10;
     private float rayDirection = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        navMeshSurface = GameObject.Find("NavMesh").GetComponent<NavMeshSurface>();
         navData = navMeshSurface.navMeshData;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
