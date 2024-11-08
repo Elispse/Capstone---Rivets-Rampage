@@ -1351,6 +1351,10 @@ PrefabInstance:
       propertyPath: pointerPos
       value: 
       objectReference: {fileID: -3857918376098805063, guid: 7291ce25a5bc995468aa92b1b711e1fe, type: 3}
+    - target: {fileID: 1671994720070350003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
+      propertyPath: playerActions
+      value: 
+      objectReference: {fileID: 981426140}
     - target: {fileID: 4812719108946441560, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
       propertyPath: m_SortingOrder
       value: 5
@@ -2840,6 +2844,7 @@ MonoBehaviour:
   segments: 10
   navMeshSurface: {fileID: 0}
   health: 2
+  damage: 10
 --- !u!1001 &7125354392584814475
 PrefabInstance:
   m_ObjectHideFlags: 0

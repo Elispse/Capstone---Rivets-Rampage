@@ -10,7 +10,7 @@ public class PlayerActions : MonoBehaviour
     private WeaponBase weapon;
     [SerializeField]
     private GameObject weaponParent;
-    private bool held;
+    public bool held { get; set; }
 
     private void Start()
     {

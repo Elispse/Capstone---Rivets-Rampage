@@ -6,12 +6,13 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private InputActionReference pointerPos;
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private Animator animator;
-    [SerializeField] private InputActionReference pointerPos;
     private Vector2 mousePos;
     private WeaponParent weaponParent;
+    private bool movementChange = false;
 
     // Start is called before the first frame update
     void Awake()
@@ -51,5 +52,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 mousePos = pointerPos.action.ReadValue<Vector2>();
         mousePos.z = Camera.main.nearClipPlane;
         return Camera.main.ScreenToWorldPoint(mousePos);
+    }
+
+    IEnumerator movementChangeCR(float time)
+    {
+        yield return new WaitForSeconds(time);
+        movementChange = false;
     }
 }

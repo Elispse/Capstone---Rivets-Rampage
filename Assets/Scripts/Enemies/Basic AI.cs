@@ -18,6 +18,8 @@ public class BasicAI : MonoBehaviour, IDamagable
     private bool wanderSpot = true;
     [SerializeField]
     private float health = 10;
+    [SerializeField]
+    private int damage = 1;
     private float rayDirection = 0;
 
     // Start is called before the first frame update
@@ -107,6 +109,14 @@ public class BasicAI : MonoBehaviour, IDamagable
         }
         animator.SetFloat("CurX", agent.velocity.x);
         animator.SetFloat("CurY", agent.velocity.y);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out IDamagable damagable) && collision.gameObject.CompareTag("Player"))
+        {
+            damagable.ApplyDamage(damage);
+        }
     }
 
     IEnumerator ResetWanderDestination(float time)
