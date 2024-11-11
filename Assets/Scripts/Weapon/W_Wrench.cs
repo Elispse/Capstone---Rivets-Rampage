@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Entities.UniversalDelegates;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -7,16 +8,22 @@ public class W_Wrench : WeaponBase
 {
     [SerializeField, Range(0, 5)] float attackRadius = 1;
     [SerializeField, Range(0, 5)] float attackDistance = 1;
+    private WeaponParent weaponParent;
     Vector3 finalPos;
+
     private void Awake()
     {
         WeaponAnimator = GetComponent<Animator>();
+        weaponParent = this.gameObject.GetComponentInParent<WeaponParent>();
     }
+
     public override void Attack()
     {
-        Vector3 attackDirection = (PointerPosition - (Vector2)this.gameObject.transform.position).normalized;
+        Vector3 p = transform.parent.parent.position;
+
+        Vector3 attackDirection = (weaponParent.pointerPosition - (Vector2)p).normalized;
         Vector3 cursorVector = attackDirection * attackDistance;
-        finalPos = this.gameObject.transform.position + cursorVector;
+        finalPos = p + cursorVector;
 
         var colliders = Physics2D.OverlapCircleAll(finalPos, attackRadius, layerMask);
         foreach (var collider in colliders)
@@ -56,5 +63,10 @@ public class W_Wrench : WeaponBase
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(finalPos, attackRadius);
+    }
+
+    public override IEnumerator ReloadCR()
+    {
+        yield return null;
     }
 }

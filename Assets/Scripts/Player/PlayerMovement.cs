@@ -7,13 +7,12 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private InputActionReference pointerPos;
+    [SerializeField] private PlayerActions playerActions;
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private Animator animator;
     private Vector2 mousePos;
     private WeaponParent weaponParent;
-    [SerializeField]
-    private PlayerActions playerActions;
     private bool movementChange = false;
     private bool change = false;
 

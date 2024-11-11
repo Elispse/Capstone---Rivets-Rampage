@@ -123,9 +123,10 @@ MonoBehaviour:
   attackRate: 3
   WeaponAnimator: {fileID: 0}
   animationTriggerName: Attack
-  tagName: 
+  tagName: Enemy
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  weaponType: 0
   attackRadius: 0.48
   attackDistance: 1

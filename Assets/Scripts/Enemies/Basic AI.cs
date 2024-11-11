@@ -21,6 +21,7 @@ public class BasicAI : MonoBehaviour, IDamagable
     [SerializeField]
     private int damage = 1;
     private float rayDirection = 0;
+    private DamageFlash damageFlash;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class BasicAI : MonoBehaviour, IDamagable
         animator = GetComponent<Animator>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        damageFlash = GetComponent<DamageFlash>();
     }
 
     // Update is called once per frame
@@ -131,6 +133,7 @@ public class BasicAI : MonoBehaviour, IDamagable
     public void ApplyDamage(float damage)
     {
         health -= damage;
+        damageFlash.CallDamageFlash();
         if (health <= 0)
         {
             Destroy(gameObject);

@@ -7,10 +7,10 @@ using UnityEngine.InputSystem.Interactions;
 public class PlayerActions : MonoBehaviour
 {
     [SerializeField] List<GameObject> weapons;
-    private WeaponBase weapon;
-    [SerializeField]
-    private GameObject weaponParent;
+    [SerializeField] private GameObject weaponParent;
+    [SerializeField] private WeaponBase weapon;
     public bool held { get; set; }
+    private int weaponNum = 0;
 
     private void Start()
     {
@@ -20,10 +20,10 @@ public class PlayerActions : MonoBehaviour
         }
         foreach (GameObject weapon in weapons)
         {
-            weapon.SetActive(false);
+            weapon.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
         weapon = weapons[0].GetComponent<WeaponBase>();
-        weapon.gameObject.SetActive(true);
+        weapon.gameObject.GetComponent<SpriteRenderer>().enabled = true;
     }
 
     private void Update()
@@ -46,8 +46,27 @@ public class PlayerActions : MonoBehaviour
         }
     }
 
-    public void SwapWeapon()
+    public void SwapWeapon(InputAction.CallbackContext context)
     {
-        
+        if (context.performed)
+        {
+            weapon.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            weaponNum = weaponNum + 1;
+            if (weaponNum > weapons.Count - 1)
+            {
+                weaponNum = 0;
+            }
+            weapon = weapons[weaponNum].GetComponent<WeaponBase>();
+            weaponParent.GetComponent<WeaponParent>().weaponRenderer = weapon.gameObject.GetComponent<SpriteRenderer>();
+            weapon.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        }
+    }
+
+    public void Reload(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            weapon.StartCoroutine(weapon.ReloadCR());
+        }
     }
 }

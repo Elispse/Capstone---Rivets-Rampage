@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 2955567752203308889}
   - component: {fileID: 7391348354349625628}
   - component: {fileID: 5145679589112473718}
+  - component: {fileID: 3837833974686488636}
+  - component: {fileID: 2376959613104177485}
   m_Layer: 0
   m_Name: Sparkplug
   m_TagString: Enemy
@@ -56,7 +58,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: dae437b4ba8c05b4ba61039f422122b8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -193,3 +195,33 @@ NavMeshAgent:
   m_BaseOffset: 0.71875
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3837833974686488636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708485392205921281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 200ca6b54838c194caf9a825e93b3e54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  segments: 10
+  navMeshSurface: {fileID: 0}
+  health: 10
+  damage: 1
+--- !u!114 &2376959613104177485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708485392205921281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c1374ce24a6c0a478224434926a7b57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashTime: 0.25
