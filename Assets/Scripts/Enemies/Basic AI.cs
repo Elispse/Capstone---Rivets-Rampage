@@ -4,24 +4,28 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Tilemaps;
 
 public class BasicAI : MonoBehaviour, IDamagable
 {
     Transform target;
     [SerializeField] int segments;
     [SerializeField] private NavMeshSurface navMeshSurface;
-    private NavMeshData navData;
+    [SerializeField] private int damage = 1;
+    [SerializeField] private float health = 10;
+    [SerializeField] private float pointRadius = 10;
+
     private NavMeshAgent agent;
-    private int distance = 3;
+    private NavMeshData navData;
     private Animator animator;
     private Utility utility = new Utility();
-    private bool wanderSpot = true;
-    [SerializeField]
-    private float health = 10;
-    [SerializeField]
-    private int damage = 1;
-    private float rayDirection = 0;
     private DamageFlash damageFlash;
+
+    private int distance = 3;
+    private float rayDirection = 0;
+    private bool wanderSpot = true;
+    private bool castRay = true;
+    public bool targetFound { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -33,11 +37,27 @@ public class BasicAI : MonoBehaviour, IDamagable
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         damageFlash = GetComponent<DamageFlash>();
+        targetFound = false;
     }
 
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
+        if (castRay && !targetFound)
+        {
+            StartCoroutine(RayCastCR());
+        }
+        else if (targetFound)
+        {
+            target = GameObject.Find("Player").transform;
+            Follow();
+        }
+    }
+
+    private IEnumerator RayCastCR()
+    {
+        castRay = false;
+        yield return new WaitForSeconds(0.2f);
         int startAngle = -75;
         int finishAngle = 75;
         int increment = (int)(finishAngle / segments);
@@ -68,13 +88,12 @@ public class BasicAI : MonoBehaviour, IDamagable
             Vector2 rayDirection2D = (Quaternion.Euler(0, 0, i + rayDirection) * transform.up).normalized;
             targetPos = rayDirection2D * distance;
             endPos = new Vector2(transform.position.x + targetPos.x, transform.position.y + targetPos.y);
-            
+
             RaycastHit2D hit2D = Physics2D.Raycast(transform.position, rayDirection2D, distance, LayerMask.GetMask("Player"));
             if (hit2D && hit2D.rigidbody.CompareTag("Player"))
             {
                 Debug.DrawRay(transform.position, endPos, Color.green);
-                target = hit2D.collider.gameObject.transform;
-                animator.SetBool("isFollowing", true);
+                targetFound = true;
             }
             else
             {
@@ -82,11 +101,8 @@ public class BasicAI : MonoBehaviour, IDamagable
                 Wander();
             }
         }
-        if (animator.GetBool("isFollowing"))
-        {
-            Follow();
-        }
         Gizmos.color = Color.red;
+        castRay = true;
     }
 
     private void Follow()
@@ -99,7 +115,7 @@ public class BasicAI : MonoBehaviour, IDamagable
 
     private void Wander()
     {
-        if (agent.remainingDistance == 0 && wanderSpot == true)
+        if (agent.remainingDistance <= 0.2 && wanderSpot == true)
         {
             StartCoroutine(ResetWanderDestination(8.0f));
             animator.SetBool("isWalking", false);
@@ -125,9 +141,19 @@ public class BasicAI : MonoBehaviour, IDamagable
     {
         wanderSpot = false;
         yield return new WaitForSeconds(time);
-        agent.SetDestination(utility.GetRandomDestination(navData.sourceBounds));
-        wanderSpot = true;
-        animator.SetBool("isWalking", true);
+        Vector3 randomDirection = Random.insideUnitSphere * pointRadius;
+        randomDirection += transform.position;
+        RaycastHit2D hit = Physics2D.Raycast(randomDirection, Vector2.up);
+        if (hit.collider != null && hit.collider.gameObject.name == "Floor" && hit.collider.gameObject.GetComponent<TilemapCollider2D>())
+        {
+            agent.SetDestination(randomDirection);
+            wanderSpot = true;
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            StartCoroutine(ResetWanderDestination(0));
+        }
     }
 
     public void ApplyDamage(float damage)
@@ -138,5 +164,10 @@ public class BasicAI : MonoBehaviour, IDamagable
         {
             Destroy(gameObject);
         }
+    }
+
+    public void FoundTarget()
+    {
+        targetFound = true;
     }
 }

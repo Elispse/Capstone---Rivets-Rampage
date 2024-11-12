@@ -315,6 +315,7 @@ MonoBehaviour:
   weapons: []
   weaponParent: {fileID: 7025545467389755811}
   weapon: {fileID: 0}
+  fireWeaponEvent: {fileID: 11400000, guid: ea656b4ebe26c524eb65f25b91b04038, type: 2}
 --- !u!114 &4694914988407937174
 MonoBehaviour:
   m_ObjectHideFlags: 0

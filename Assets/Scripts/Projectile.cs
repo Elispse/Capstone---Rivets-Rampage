@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -7,10 +6,11 @@ public class Projectile : MonoBehaviour
     public float Damage { get; set; }
     private void Awake()
     {
-        StartCoroutine(DestroyOverTime(10));
+        StartCoroutine(DestroyOverTime(5));
+        gameObject.layer = 8;
     }
 
-    private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent(out IDamagable damagable))
         {

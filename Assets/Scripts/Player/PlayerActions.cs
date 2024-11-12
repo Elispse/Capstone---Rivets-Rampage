@@ -9,6 +9,7 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] List<GameObject> weapons;
     [SerializeField] private GameObject weaponParent;
     [SerializeField] private WeaponBase weapon;
+    [SerializeField] private BoolEvent fireWeaponEvent;
     public bool held { get; set; }
     private int weaponNum = 0;
 
@@ -39,6 +40,7 @@ public class PlayerActions : MonoBehaviour
         if (context.performed)
         {
             held = true;
+            fireWeaponEvent.RaiseEvent(true);
         }
         if (context.canceled)
         {

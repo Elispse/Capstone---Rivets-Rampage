@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 847350902403700570}
   - component: {fileID: 8651190325869185709}
   - component: {fileID: 7586694655628794659}
-  m_Layer: 0
+  - component: {fileID: 2253498771244445920}
+  m_Layer: 7
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -491,6 +492,42 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!19719996 &2253498771244445920
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652691627902229072}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!1 &972995239376001678
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,15 +768,39 @@ Tilemap:
   m_Enabled: 1
   m_Tiles: {}
   m_AnimatedTiles: {}
-  m_TileAssetArray: []
-  m_TileSpriteArray: []
-  m_TileMatrixArray: []
-  m_TileColorArray: []
+  m_TileAssetArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  m_TileSpriteArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  m_TileMatrixArray:
+  - m_RefCount: 0
+    m_Data:
+      e00: -1.0642265e-16
+      e01: 0
+      e02: 2.3622353e+10
+      e03: 2.3622353e+10
+      e10: 4.5915e-41
+      e11: 0
+      e12: 6.43e-43
+      e13: 6.43e-43
+      e20: -5.209476e-37
+      e21: -2.027291e-30
+      e22: -7.812113e-19
+      e23: -1.22754e-40
+      e30: 4.5904e-41
+      e31: 6.47e-43
+      e32: 6.43e-43
+      e33: 6.46e-43
+  m_TileColorArray:
+  - m_RefCount: 0
+    m_Data: {r: 4.6691e-41, g: 4.6691e-41, b: 4.6691e-41, a: 4.6691e-41}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: 0, y: 0, z: 0}
-  m_Size: {x: 0, y: 0, z: 1}
+  m_Origin: {x: -14, y: 0, z: 0}
+  m_Size: {x: 14, y: 1, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
