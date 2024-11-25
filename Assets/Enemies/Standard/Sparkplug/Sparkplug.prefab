@@ -227,6 +227,7 @@ MonoBehaviour:
   damage: 1
   health: 6
   pointRadius: 7.5
+  enemyDead: {fileID: 11400000, guid: 0a1caebb17f498a4585b380ccf23190b, type: 2}
 --- !u!114 &8979409494521999546
 MonoBehaviour:
   m_ObjectHideFlags: 0

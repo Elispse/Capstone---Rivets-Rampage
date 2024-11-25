@@ -25,6 +25,5 @@ public abstract class WeaponBase : MonoBehaviour
 
     public abstract bool Use();
     public abstract void Attack();
-    
     public abstract IEnumerator ReloadCR();
 }

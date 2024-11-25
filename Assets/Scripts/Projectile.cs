@@ -16,7 +16,10 @@ public class Projectile : MonoBehaviour
         {
             damagable.ApplyDamage(Damage);
         }
-        Destroy(gameObject);
+        if (!collision.gameObject.GetComponent<Collider2D>().isTrigger)
+        {
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator DestroyOverTime(float time)
