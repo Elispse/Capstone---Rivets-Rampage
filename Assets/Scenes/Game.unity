@@ -273,6 +273,37 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &362784117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 362784118}
+  m_Layer: 0
+  m_Name: RoomRoom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &362784118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362784117}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &710519543
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +339,7 @@ MonoBehaviour:
     LevelGraph: {fileID: 11400000, guid: a5d930a2058e3bd4eba9d8a798280769, type: 2}
     UseCorridors: 1
   GeneratorConfig:
-    RootGameObject: {fileID: 0}
+    RootGameObject: {fileID: 362784117}
     Timeout: 10000
     RepeatModeOverride: 0
     MinimumRoomDistance: 3
@@ -402,3 +433,4 @@ SceneRoots:
   - {fileID: 55080079}
   - {fileID: 710519545}
   - {fileID: 2002043223}
+  - {fileID: 362784118}
