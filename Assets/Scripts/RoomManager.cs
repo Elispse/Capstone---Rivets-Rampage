@@ -70,7 +70,7 @@ public class RoomManager : MonoBehaviour
         TilemapCollider2D tileMap = parent.GetComponentInChildren<TilemapCollider2D>();
         Vector3 point = utility.GetRandomDestination(tileMap.bounds);
         hit = Physics2D.Raycast(point, Vector2.up);
-        if (hit.collider != null && hit.collider.gameObject.name == "Floor" && hit.collider == tileMap)
+        if (hit.collider != null && hit.collider.gameObject.name == "Floor" && hit.collider == tileMap && hit.collider.gameObject != GameObject.Find("RoomManager").GetComponentInChildren<BoxCollider2D>())
         {
             spawnPoint = hit.point;
         }

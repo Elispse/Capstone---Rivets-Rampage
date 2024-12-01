@@ -4,14 +4,19 @@ public class CameraFollow : MonoBehaviour
 {
     [SerializeField]
     private Transform followTransform;
+    private bool foundTarget;
 
-
-    private void Start()
+    private void Awake()
     {
-        followTransform = FindObjectOfType<PlayerMovement>().transform;
+        foundTarget = false;
     }
-    private void FixedUpdate()
+    private void Update()
     {
+        if (!foundTarget)
+        {
+            followTransform = FindObjectOfType<PlayerMovement>().transform;
+            foundTarget = true;
+        }
         this.transform.position = new Vector3(followTransform.position.x, followTransform.position.y, this.transform.position.z);
     }
 }

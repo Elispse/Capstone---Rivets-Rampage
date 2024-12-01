@@ -14,6 +14,7 @@ namespace Edgar.Unity
     internal class DungeonGeneratorTaskGrid2D : PipelineTask<DungeonGeneratorPayloadGrid2D>
     {
         private readonly DungeonGeneratorConfigGrid2D config;
+        public Task task;
 
         public DungeonGeneratorTaskGrid2D(DungeonGeneratorConfigGrid2D config)
         {
@@ -75,7 +76,7 @@ namespace Edgar.Unity
             #else
             // Run the generator in a different thread so that the computation is not blocking
             LayoutGrid2D<RoomBase> layout = null;
-            var task = Task.Run(() => layout = generator.GenerateLayout());
+            task = Task.Run(() => layout = generator.GenerateLayout());
 
             while (!task.IsCompleted)
             {
