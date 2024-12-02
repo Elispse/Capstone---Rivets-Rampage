@@ -8,6 +8,10 @@ public class PlayerMain : MonoBehaviour, IDamagable, IHealable, IScoreable
     private FloatVariable healthVar;
     [SerializeField]
     private IntVariable score;
+    [SerializeField] private VoidEvent hurtEvent;
+    [SerializeField] private VoidEvent deadEvent;
+
+    private bool isHit = false;
 
     public void AddScore(int score)
     {
@@ -16,16 +20,27 @@ public class PlayerMain : MonoBehaviour, IDamagable, IHealable, IScoreable
 
     public void ApplyDamage(float damage)
     {
-        healthVar.value -= damage;
-        if (healthVar.value <= 0)
+        if (!isHit)
         {
-            Debug.Log("I'm Dead");
+            isHit = true;
+            healthVar.value -= damage;
+            if (healthVar.value <= 0)
+            {
+                deadEvent.RaiseEvent();
+            }
+            hurtEvent.RaiseEvent();
+            StartCoroutine(damageCooldownCR());
         }
-        Debug.Log("I've Been Hit");
     }
 
     public void Heal(float health)
     {
         healthVar.value += health;
+    }
+
+    private IEnumerator damageCooldownCR()
+    {
+        yield return new WaitForSeconds(1);
+        isHit = false;
     }
 }

@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
@@ -10,8 +12,11 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private GameObject weaponParent;
     [SerializeField] private WeaponBase weapon;
     [SerializeField] private BoolEvent fireWeaponEvent;
+    [SerializeField] private WeaponUI weaponUI;
     public bool held { get; set; }
     private int weaponNum = 0;
+    private GameObject weaponMagSize;
+    private GameObject weaponCountSize;
 
     private void Start()
     {
@@ -25,6 +30,9 @@ public class PlayerActions : MonoBehaviour
         }
         weapon = weapons[0].GetComponent<WeaponBase>();
         weapon.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+
+        //update WeaponUI
+        weaponUI.UpdateInfo(weapon.GetComponent<SpriteRenderer>().sprite, weapon.GetComponent<WeaponBase>().magCapacity, weapon.GetComponent<WeaponBase>().ammoCount);
     }
 
     private void Update()
@@ -61,6 +69,9 @@ public class PlayerActions : MonoBehaviour
             weapon = weapons[weaponNum].GetComponent<WeaponBase>();
             weaponParent.GetComponent<WeaponParent>().weaponRenderer = weapon.gameObject.GetComponent<SpriteRenderer>();
             weapon.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+
+            //update WeaponUI
+            weaponUI.UpdateInfo(weapon.GetComponent<SpriteRenderer>().sprite, weapon.GetComponent<WeaponBase>().magCapacity, weapon.GetComponent<WeaponBase>().ammoCount);
         }
     }
 

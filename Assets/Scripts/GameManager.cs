@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,8 +23,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject playerUI;
     [SerializeField] private GameObject loadingUI;
     [SerializeField] private GameObject pauseUI;
+    [SerializeField] private GameObject wonUI;
+    [SerializeField] private GameObject deadUI;
+
+    [SerializeField] private Sprite heartFull;
+    [SerializeField] private Sprite heartHalf;
+    [SerializeField] private Sprite heartEmpty;
 
     [SerializeField] private string sceneToLoad;
+
+    [SerializeField] private FloatVariable playerHealth;
 
     private GameState state = GameState.START_GAME;
     private RoomComplete roomComplete;
@@ -33,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         Surface2D.BuildNavMeshAsync();
         roomComplete = generator.GetComponent<RoomComplete>();
+        sceneToLoad = "MainMenu";
     }
 
     private void Update()
@@ -49,6 +59,7 @@ public class GameManager : MonoBehaviour
                     loadingUI.SetActive(false);
                     playerUI.SetActive(true);
                     Time.timeScale = 1;
+                    playerHealth.value = 6;
                     state = GameState.PLAY_GAME;
                 }
                 break;
@@ -59,6 +70,7 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 0;
                 break;
             case GameState.GAME_OVER:
+                Time.timeScale = 0;
                 break;
         }
     }
@@ -87,6 +99,41 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1;
             gamePaused = false;
             state = GameState.PLAY_GAME;
+        }
+    }
+
+    public void RestartGame()
+    {
+        sceneToLoad = "Game";
+        StartCoroutine(LoadSceneASync());
+    }
+
+    public void PlayerDied()
+    {
+        pauseUI.SetActive(false);
+        playerUI.SetActive(false);
+        loadingUI.SetActive(false);
+        wonUI.SetActive(false);
+        deadUI.SetActive(true);
+        state = GameState.GAME_OVER;
+    }
+
+    public void LoseHealth()
+    {
+        if (playerHealth.value >= 4)
+        {
+            playerUI.gameObject.transform.GetChild(2).GetComponent<Image>().sprite = heartHalf;
+            if (playerHealth.value == 4) playerUI.gameObject.transform.GetChild(2).GetComponent<Image>().sprite = heartEmpty;
+        }
+        else if (playerHealth.value >= 2)
+        {
+            playerUI.gameObject.transform.GetChild(1).GetComponent<Image>().sprite = heartHalf;
+            if (playerHealth.value == 2) playerUI.gameObject.transform.GetChild(1).GetComponent<Image>().sprite = heartEmpty;
+        }
+        else if (playerHealth.value >= 0)
+        {
+            playerUI.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = heartHalf;
+            if (playerHealth.value == 0) playerUI.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = heartEmpty;
         }
     }
 

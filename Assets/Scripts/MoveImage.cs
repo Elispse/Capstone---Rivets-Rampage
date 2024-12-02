@@ -12,13 +12,19 @@ public class MoveImage : MonoBehaviour
     private Vector3 endVector;
     private bool ready = false;
 
-    private void Start()
+    private void Awake()
     {
         GameObject parent = this.gameObject.transform.parent.gameObject;
         startVector = new Vector3(startPosition, 0, 0);
         endVector = new Vector3(endPosition, 0, 0);
         transform.localPosition = startVector;
+        Time.timeScale = 1;
         StartCoroutine(StartMoveImageCR());
+    }
+
+    private void Start()
+    {
+        
     }
 
     private void FixedUpdate()

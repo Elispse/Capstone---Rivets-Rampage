@@ -16,13 +16,15 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] protected string animationTriggerName;
     [SerializeField] protected string tagName;
     [SerializeField] protected LayerMask layerMask = Physics.AllLayers;
-    [SerializeField] public WeaponType weaponType;
     [SerializeField] protected int reloadTime;
-    
+    [SerializeField] public WeaponType weaponType;
+    [SerializeField] public int magCapacity;
+    [SerializeField] public int ammoCount;
+
     public Vector2 PointerPosition { get; set; }
+    protected WeaponUI weaponUI;
 
     protected bool ready = true;
-
     public abstract bool Use();
     public abstract void Attack();
     public abstract IEnumerator ReloadCR();

@@ -3,14 +3,12 @@ using UnityEngine;
 
 public class W_NailGun : WeaponBase
 {
-    [SerializeField] int magCapacity;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform firePoint;
     [SerializeField, Range(1, 50)] int fireForce = 20;
     private WeaponParent weaponParent;
     private GameObject bullet;
     private float weaponSpeed;
-    private int ammoCount;
     private bool isReload = false;
     
 
@@ -20,6 +18,10 @@ public class W_NailGun : WeaponBase
         weaponParent = this.gameObject.GetComponentInParent<WeaponParent>();
         weaponSpeed = WeaponAnimator.speed;
         ammoCount = magCapacity;
+        weaponUI = GetComponentInParent<WeaponUI>();
+
+        //update WeaponUI
+        weaponUI.UpdateInfo(GetComponent<SpriteRenderer>().sprite, magCapacity, ammoCount);
     }
 
     public override void Attack()
@@ -30,6 +32,7 @@ public class W_NailGun : WeaponBase
         bullet.GetComponent<Projectile>().Damage = damage;
         bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.right * fireForce, ForceMode2D.Impulse);
         ammoCount--;
+        weaponUI.UpdateAmmoCount(ammoCount);
     }
 
     public override bool Use()
@@ -62,6 +65,7 @@ public class W_NailGun : WeaponBase
         yield return new WaitForSeconds(reloadTime);
         ammoCount = magCapacity;
         isReload = false;
+        weaponUI.UpdateAmmoCount(ammoCount);
     }
 
     IEnumerator ResetAttackReadyCR(float time)
