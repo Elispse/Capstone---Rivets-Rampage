@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case GameState.PLAY_GAME:
-                
+                Time.timeScale = 1;
                 break;
             case GameState.PAUSE_GAME:
                 Time.timeScale = 0;
@@ -96,7 +96,6 @@ public class GameManager : MonoBehaviour
         {
             pauseUI.SetActive(false);
             playerUI.SetActive(true);
-            Time.timeScale = 1;
             gamePaused = false;
             state = GameState.PLAY_GAME;
         }
@@ -115,6 +114,16 @@ public class GameManager : MonoBehaviour
         loadingUI.SetActive(false);
         wonUI.SetActive(false);
         deadUI.SetActive(true);
+        state = GameState.GAME_OVER;
+    }
+
+    public void PlayerWon()
+    {
+        pauseUI.SetActive(false);
+        playerUI.SetActive(false);
+        loadingUI.SetActive(false);
+        deadUI.SetActive(false);
+        wonUI.SetActive(true);
         state = GameState.GAME_OVER;
     }
 

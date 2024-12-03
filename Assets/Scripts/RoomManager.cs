@@ -16,6 +16,7 @@ public class RoomManager : MonoBehaviour
     [SerializeField] public RoomType roomType;
     [SerializeField] private Collider2D[] collider2Ds;
     [SerializeField] private BoolEvent roomCompleteEvent;
+    [SerializeField] private VoidEvent endRoomEvent;
     [SerializeField] private GameObject[] enemyList;
     [SerializeField] private List<GameObject> enemies;
 
@@ -59,6 +60,10 @@ public class RoomManager : MonoBehaviour
         {
             roomComplete = true;
             roomCompleteEvent.RaiseEvent(true);
+            if (transform.GetChild(3).name == "End Portal")
+            {
+                endRoomEvent.RaiseEvent();
+            }
         }
         EnemyDead();
     }

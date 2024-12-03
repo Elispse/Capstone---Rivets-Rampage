@@ -650,15 +650,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Retry?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 06b917b7404711c4c984248f9f44c4b2, type: 2}
-  m_sharedMaterial: {fileID: -5317610143149069843, guid: 06b917b7404711c4c984248f9f44c4b2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 752f1b8dee7583d4887d4eb43d9e5eb8, type: 2}
+  m_sharedMaterial: {fileID: -5317610143149069843, guid: 752f1b8dee7583d4887d4eb43d9e5eb8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4285361517
-  m_fontColor: {r: 0.42767292, g: 0.42767292, b: 0.42767292, a: 1}
+    rgba: 4285427310
+  m_fontColor: {r: 0.43137255, g: 0.43137255, b: 0.43137255, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -782,17 +782,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Retry?
+  m_text: Again?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 06b917b7404711c4c984248f9f44c4b2, type: 2}
-  m_sharedMaterial: {fileID: -5317610143149069843, guid: 06b917b7404711c4c984248f9f44c4b2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 752f1b8dee7583d4887d4eb43d9e5eb8, type: 2}
+  m_sharedMaterial: {fileID: -5317610143149069843, guid: 752f1b8dee7583d4887d4eb43d9e5eb8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4285361517
-  m_fontColor: {r: 0.42767292, g: 0.42767292, b: 0.42767292, a: 1}
+    rgba: 4285427310
+  m_fontColor: {r: 0.43137255, g: 0.43137255, b: 0.43137255, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2542,19 +2542,19 @@ MonoBehaviour:
       m_Calls: []
   m_text: Quit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 06b917b7404711c4c984248f9f44c4b2, type: 2}
-  m_sharedMaterial: {fileID: -5317610143149069843, guid: 06b917b7404711c4c984248f9f44c4b2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 752f1b8dee7583d4887d4eb43d9e5eb8, type: 2}
+  m_sharedMaterial: {fileID: -5317610143149069843, guid: 752f1b8dee7583d4887d4eb43d9e5eb8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_enableVertexGradient: 0
+    rgba: 4279506157
+  m_fontColor: {r: 0.92941177, g: 0.078431375, b: 0.078431375, a: 1}
+  m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 0.42138356, g: 0.03842802, b: 0.03842802, a: 1}
     topRight: {r: 1, g: 1, b: 1, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
@@ -2876,7 +2876,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -3693,7 +3693,7 @@ GameObject:
   - component: {fileID: 749326670}
   - component: {fileID: 749326669}
   m_Layer: 5
-  m_Name: lossText
+  m_Name: WinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3738,7 +3738,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You Died!
+  m_text: You WON!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06b917b7404711c4c984248f9f44c4b2, type: 2}
   m_sharedMaterial: {fileID: -5317610143149069843, guid: 06b917b7404711c4c984248f9f44c4b2, type: 2}
@@ -4162,19 +4162,19 @@ MonoBehaviour:
       m_Calls: []
   m_text: Quit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 06b917b7404711c4c984248f9f44c4b2, type: 2}
-  m_sharedMaterial: {fileID: -5317610143149069843, guid: 06b917b7404711c4c984248f9f44c4b2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 752f1b8dee7583d4887d4eb43d9e5eb8, type: 2}
+  m_sharedMaterial: {fileID: -5317610143149069843, guid: 752f1b8dee7583d4887d4eb43d9e5eb8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4285427310
-  m_fontColor: {r: 0.43137255, g: 0.43137255, b: 0.43137255, a: 1}
-  m_enableVertexGradient: 0
+    rgba: 4279506157
+  m_fontColor: {r: 0.92941177, g: 0.078431375, b: 0.078431375, a: 1}
+  m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 0.1509434, g: 0, b: 0, a: 1}
     topRight: {r: 1, g: 1, b: 1, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
@@ -4724,7 +4724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1162834103
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5550,19 +5550,19 @@ MonoBehaviour:
       m_Calls: []
   m_text: Quit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 06b917b7404711c4c984248f9f44c4b2, type: 2}
-  m_sharedMaterial: {fileID: -5317610143149069843, guid: 06b917b7404711c4c984248f9f44c4b2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 752f1b8dee7583d4887d4eb43d9e5eb8, type: 2}
+  m_sharedMaterial: {fileID: -5317610143149069843, guid: 752f1b8dee7583d4887d4eb43d9e5eb8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4285427310
-  m_fontColor: {r: 0.43137255, g: 0.43137255, b: 0.43137255, a: 1}
-  m_enableVertexGradient: 0
+    rgba: 4279506157
+  m_fontColor: {r: 0.92941177, g: 0.078431375, b: 0.078431375, a: 1}
+  m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 0.18238991, g: 0, b: 0, a: 1}
     topRight: {r: 1, g: 1, b: 1, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
@@ -5759,15 +5759,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Resume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 06b917b7404711c4c984248f9f44c4b2, type: 2}
-  m_sharedMaterial: {fileID: -5317610143149069843, guid: 06b917b7404711c4c984248f9f44c4b2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 752f1b8dee7583d4887d4eb43d9e5eb8, type: 2}
+  m_sharedMaterial: {fileID: -5317610143149069843, guid: 752f1b8dee7583d4887d4eb43d9e5eb8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4285427310
+  m_fontColor: {r: 0.43137255, g: 0.43137255, b: 0.43137255, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6445,6 +6445,7 @@ GameObject:
   - component: {fileID: 2002043222}
   - component: {fileID: 2002043224}
   - component: {fileID: 2002043225}
+  - component: {fileID: 2002043226}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6539,6 +6540,34 @@ MonoBehaviour:
       - m_Target: {fileID: 2002043222}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: PlayerDied
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2002043226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002043221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4584dc1e5d4f4a14f860c97795383a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: af9146343fcb8dc448194f6cc4db8503, type: 2}
+  listener:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2002043222}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PlayerWon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
