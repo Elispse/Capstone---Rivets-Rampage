@@ -95,4 +95,13 @@ public class RoomManager : MonoBehaviour
             }
         }
     }
+
+    public void ClearAllEnemies()
+    {
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            Destroy(enemies[i]);
+            enemies.Remove(enemies[i]);
+        }
+    }
 }

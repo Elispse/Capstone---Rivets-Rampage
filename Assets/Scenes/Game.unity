@@ -5949,18 +5949,34 @@ PrefabInstance:
       objectReference: {fileID: 1808722962}
     - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
       propertyPath: m_ActionEvents.Array.data[17].m_ActionId
       value: dfb0a62b-c3ca-4a3c-aee3-fb6076d5bced
       objectReference: {fileID: 0}
     - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_ActionId
+      value: 9e619e88-06be-4209-aee1-d05898b6d202
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
       propertyPath: m_ActionEvents.Array.data[17].m_ActionName
       value: UI/Pause[/Keyboard/escape]
       objectReference: {fileID: 0}
     - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_ActionName
+      value: Player/ClearRoom[/Keyboard/leftBracket]
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
@@ -5968,7 +5984,19 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2002043222}
+    - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2002043222}
     - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
@@ -5976,15 +6004,39 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PauseGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DestroyAllEnemies
       objectReference: {fileID: 0}
     - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PlayerActions, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319008299565351003, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3954749738707695047, guid: b42e733a9a399b74498c86709e1a2ec0, type: 3}
@@ -6478,6 +6530,7 @@ MonoBehaviour:
   heartEmpty: {fileID: -915552264, guid: 61747b6ece4d5df49aae26243d8bd84f, type: 3}
   sceneToLoad: MainMenu
   playerHealth: {fileID: 11400000, guid: a5e20c478fc33df4babf08bbc555a02c, type: 2}
+  destroyAllEnemies: {fileID: 11400000, guid: 24d226c8d82fb2a49a1732dd4ff032f3, type: 2}
 --- !u!4 &2002043223
 Transform:
   m_ObjectHideFlags: 0

@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private FloatVariable playerHealth;
 
+    [SerializeField] private VoidEvent destroyAllEnemies;
+
     private GameState state = GameState.START_GAME;
     private RoomComplete roomComplete;
     private bool gamePaused = false;
@@ -144,6 +146,11 @@ public class GameManager : MonoBehaviour
             playerUI.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = heartHalf;
             if (playerHealth.value == 0) playerUI.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = heartEmpty;
         }
+    }
+
+    public void DestroyAllEnemies()
+    {
+        destroyAllEnemies.RaiseEvent();
     }
 
     private IEnumerator LoadSceneASync()

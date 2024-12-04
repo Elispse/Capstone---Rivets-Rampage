@@ -4169,6 +4169,7 @@ GameObject:
   - component: {fileID: 15552453495544484}
   - component: {fileID: 6596684218116727465}
   - component: {fileID: 8409711270755654892}
+  - component: {fileID: 7951615843139135646}
   m_Layer: 0
   m_Name: RoomManager
   m_TagString: Untagged
@@ -4214,6 +4215,7 @@ MonoBehaviour:
   - {fileID: 3975262892611339303}
   - {fileID: 3229252961747420337}
   roomCompleteEvent: {fileID: 11400000, guid: 850231b871af38c42818701bc2fb4792, type: 2}
+  endRoomEvent: {fileID: 0}
   enemyList:
   - {fileID: 708485392205921281, guid: 16d195ed89de87945a5795c71825f167, type: 3}
   enemies: []
@@ -4244,6 +4246,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &7951615843139135646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5470801705459153904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4584dc1e5d4f4a14f860c97795383a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: 24d226c8d82fb2a49a1732dd4ff032f3, type: 2}
+  listener:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6596684218116727465}
+        m_TargetAssemblyTypeName: RoomManager, Assembly-CSharp
+        m_MethodName: ClearAllEnemies
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6610836705010940194
 GameObject:
   m_ObjectHideFlags: 0
