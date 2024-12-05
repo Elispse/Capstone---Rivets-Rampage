@@ -16,7 +16,7 @@ TagManager:
   - Floor
   - Bullet
   - TriggerBoxes
-  - 
+  - Post-Processing
   - 
   - 
   - 
@@ -47,4 +47,7 @@ TagManager:
     locked: 0
   - name: Entities
     uniqueID: 3638879943
+    locked: 0
+  - name: GUI
+    uniqueID: 746237617
     locked: 0

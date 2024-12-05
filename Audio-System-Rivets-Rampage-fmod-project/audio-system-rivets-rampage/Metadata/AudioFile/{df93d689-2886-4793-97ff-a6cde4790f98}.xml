@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{df93d689-2886-4793-97ff-a6cde4790f98}">
+		<property name="assetPath">
+			<value>SFX/Player/retro-hurt-2-236675.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.2089795918367347</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a186f88e-6915-4630-9f75-ede2ebab0735}</destination>
+		</relationship>
+	</object>
+</objects>

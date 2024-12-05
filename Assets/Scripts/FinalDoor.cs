@@ -20,6 +20,7 @@ public class FinalDoor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.gameWon, this.transform.position);
         gameEnd.RaiseEvent();
     }
 }

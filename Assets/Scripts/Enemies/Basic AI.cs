@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using NavMeshPlus.Components;
 using System.Collections;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class BasicAI : MonoBehaviour, IDamagable
     [SerializeField] private int damage = 1;
     [SerializeField] private float health = 10;
     [SerializeField] private float pointRadius = 10;
+    [SerializeField] private GameObject healthDrop;
 
     private NavMeshAgent agent;
     private NavMeshData navData;
@@ -25,6 +27,8 @@ public class BasicAI : MonoBehaviour, IDamagable
     private bool castRay = true;
     public bool targetFound { get; set; }
 
+    private EventInstance enemyFootsteps;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,9 +40,18 @@ public class BasicAI : MonoBehaviour, IDamagable
         agent.updateUpAxis = false;
         damageFlash = GetComponent<DamageFlash>();
         targetFound = false;
+
+        enemyFootsteps = AudioManager.instance.CreateInstance(FMODEvents.instance.enemyWalk);
     }
 
-    // Update is called once per frame
+    private void Update()
+    {
+        if (Time.timeScale == 0)
+        {
+            enemyFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
+        }
+    }
+
     private void FixedUpdate()
     {
         if (castRay && !targetFound)
@@ -50,6 +63,7 @@ public class BasicAI : MonoBehaviour, IDamagable
             target = GameObject.Find("Player").transform;
             Follow();
         }
+        UpdateSound();
     }
 
     private IEnumerator RayCastCR()
@@ -160,12 +174,46 @@ public class BasicAI : MonoBehaviour, IDamagable
         damageFlash.CallDamageFlash();
         if (health <= 0)
         {
+            GenerateDrops();
             Destroy(gameObject);
+        }
+    }
+
+    private void UpdateSound()
+    {
+        if (animator.GetBool("isWalking") == true)
+        {
+            PLAYBACK_STATE playbackState;
+            enemyFootsteps.getPlaybackState(out playbackState);
+            if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+            {
+                enemyFootsteps.start();
+            }
+        }
+        else
+        {
+            enemyFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
+        }
+    }
+
+    private void GenerateDrops()
+    {
+        int rand = Random.Range(1, 5);
+
+        if (rand == 2)
+        {
+            GameObject newObject = Instantiate(healthDrop);
+            newObject.transform.position = gameObject.transform.position;
         }
     }
 
     public void FoundTarget()
     {
         targetFound = true;
+    }
+
+    private void OnDestroy()
+    {
+        enemyFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
     }
 }

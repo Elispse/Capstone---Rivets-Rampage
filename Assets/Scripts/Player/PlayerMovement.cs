@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FMOD.Studio;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,8 +17,13 @@ public class PlayerMovement : MonoBehaviour
     private bool movementChange = false;
     private bool change = false;
 
+    private EventInstance playerFootsteps;
 
-    // Start is called before the first frame update
+    private void Start()
+    {
+        playerFootsteps = AudioManager.instance.CreateInstance(FMODEvents.instance.playerWalk);
+    }
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -25,7 +31,15 @@ public class PlayerMovement : MonoBehaviour
         weaponParent = GetComponentInChildren<WeaponParent>();
     }
 
-    // Update is called once per frame
+
+    private void Update()
+    {
+        if (Time.timeScale == 0)
+        {
+            playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
+        }
+    }
+
     void FixedUpdate()
     {
         rb.velocity = moveInput * moveSpeed * Time.deltaTime;
@@ -47,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("LastX", -(this.transform.position.x - mousePos.x));
             animator.SetFloat("LastY", -(this.transform.position.y - mousePos.y));
         }
+        UpdateSound();
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -76,6 +91,23 @@ public class PlayerMovement : MonoBehaviour
         Vector3 mousePos = pointerPos.action.ReadValue<Vector2>();
         mousePos.z = Camera.main.nearClipPlane;
         return Camera.main.ScreenToWorldPoint(mousePos);
+    }
+
+    private void UpdateSound()
+    {
+        if (animator.GetBool("isWalking") == true)
+        {
+            PLAYBACK_STATE playbackState;
+            playerFootsteps.getPlaybackState(out playbackState);
+            if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+            {
+                playerFootsteps.start();
+            }
+        }
+        else
+        {
+            playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
+        }
     }
 
     IEnumerator movementChangeCR(float time)

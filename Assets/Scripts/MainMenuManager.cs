@@ -18,6 +18,7 @@ public class MainMenuManager : MonoBehaviour
         optionScreen.SetActive(false);
         creditScreen.SetActive(false);
         loadingScreen.SetActive(true);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.UIClick, this.transform.position);
         StartCoroutine(LoadSceneASync());
     }
 
@@ -26,6 +27,7 @@ public class MainMenuManager : MonoBehaviour
         mainScreen.SetActive(true);
         optionScreen.SetActive(false);
         creditScreen.SetActive(false);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.UIClick, this.transform.position);
     }
 
     public void OptionsMenu()
@@ -33,6 +35,7 @@ public class MainMenuManager : MonoBehaviour
         mainScreen.SetActive(false);
         optionScreen.SetActive(true);
         creditScreen.SetActive(false);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.UIClick, this.transform.position);
     }
 
     public void CreditMenu()
@@ -40,10 +43,12 @@ public class MainMenuManager : MonoBehaviour
         mainScreen.SetActive(false);
         optionScreen.SetActive(false);
         creditScreen.SetActive(true);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.UIClick, this.transform.position);
     }
 
     public void QuitGame()
     {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.UIClick, this.transform.position);
         Application.Quit();
     }
 

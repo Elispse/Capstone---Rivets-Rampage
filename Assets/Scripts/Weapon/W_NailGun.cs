@@ -33,6 +33,7 @@ public class W_NailGun : WeaponBase
         bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.right * fireForce, ForceMode2D.Impulse);
         ammoCount--;
         weaponUI.UpdateAmmoCount(ammoCount);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.nailGun, this.transform.position);
     }
 
     public override bool Use()

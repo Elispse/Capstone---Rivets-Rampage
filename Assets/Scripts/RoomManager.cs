@@ -64,6 +64,7 @@ public class RoomManager : MonoBehaviour
             {
                 endRoomEvent.RaiseEvent();
             }
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.roomComplete, this.transform.position);
         }
         EnemyDead();
     }

@@ -10,6 +10,7 @@ public class Door : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && roomComplete)
         {
             gameObject.SetActive(false);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.doorOpen, this.transform.position);
         }
     }
 

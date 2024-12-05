@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{985f41fe-a9f9-43b9-b87f-9ad0c0834c80}">
+		<property name="assetPath">
+			<value>SFX/Pick-ups/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a186f88e-6915-4630-9f75-ede2ebab0735}</destination>
+		</relationship>
+	</object>
+</objects>

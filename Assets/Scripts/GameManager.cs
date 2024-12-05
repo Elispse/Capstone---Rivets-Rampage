@@ -1,9 +1,7 @@
-using Edgar.Legacy.Core.LayoutGenerators.DungeonGenerator;
-using Edgar.Unity;
 using NavMeshPlus.Components;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -23,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject playerUI;
     [SerializeField] private GameObject loadingUI;
     [SerializeField] private GameObject pauseUI;
+    [SerializeField] private GameObject optionsUI;
     [SerializeField] private GameObject wonUI;
     [SerializeField] private GameObject deadUI;
 
@@ -39,6 +38,7 @@ public class GameManager : MonoBehaviour
     private GameState state = GameState.START_GAME;
     private RoomComplete roomComplete;
     private bool gamePaused = false;
+    private bool options = false;
 
     private void Start()
     {
@@ -82,25 +82,54 @@ public class GameManager : MonoBehaviour
         pauseUI.SetActive(false);
         playerUI.SetActive(false);
         loadingUI.SetActive(true);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.UIClick, this.transform.position);
         StartCoroutine(LoadSceneASync());
     }
 
-    public void PauseGame()
+    public void ResumeBtn()
     {
-        if (!gamePaused)
+        pauseUI.SetActive(false);
+        optionsUI.SetActive(false);
+        playerUI.SetActive(true);
+        gamePaused = false;
+        state = GameState.PLAY_GAME;
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.UIClick, this.transform.position);
+    }
+
+    public void PauseGame(InputAction.CallbackContext context)
+    {
+        if (context.performed)
         {
-            pauseUI.SetActive(true);
-            playerUI.SetActive(false);
-            gamePaused = true;
-            state = GameState.PAUSE_GAME;
+            if (!gamePaused)
+            {
+                pauseUI.SetActive(true);
+                playerUI.SetActive(false);
+                gamePaused = true;
+                state = GameState.PAUSE_GAME;
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.UIClick, this.transform.position);
+            }
+            else
+            {
+                ResumeBtn();
+            }
+        }
+    }
+
+    public void Options()
+    {
+        if (!options)
+        {
+            pauseUI.SetActive(false);
+            optionsUI.SetActive(true);
+            options = true;
         }
         else
         {
-            pauseUI.SetActive(false);
-            playerUI.SetActive(true);
-            gamePaused = false;
-            state = GameState.PLAY_GAME;
+            pauseUI.SetActive(true);
+            optionsUI.SetActive(false);
+            options = false;
         }
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.UIClick, this.transform.position);
     }
 
     public void RestartGame()
@@ -145,6 +174,31 @@ public class GameManager : MonoBehaviour
         {
             playerUI.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = heartHalf;
             if (playerHealth.value == 0) playerUI.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = heartEmpty;
+        }
+    }
+
+    public void onHeal()
+    {
+        switch (playerHealth.value)
+        {
+            case 6:
+                playerUI.gameObject.transform.GetChild(2).GetComponent<Image>().sprite = heartFull;
+                break;
+            case 5:
+                playerUI.gameObject.transform.GetChild(2).GetComponent<Image>().sprite = heartHalf;
+                break;
+            case 4:
+                playerUI.gameObject.transform.GetChild(1).GetComponent<Image>().sprite = heartFull;
+                break;
+            case 3:
+                playerUI.gameObject.transform.GetChild(1).GetComponent<Image>().sprite = heartHalf;
+                break;
+            case 2:
+                playerUI.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = heartFull;
+                break;
+            case 1:
+                playerUI.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = heartHalf;
+                break;
         }
     }
 

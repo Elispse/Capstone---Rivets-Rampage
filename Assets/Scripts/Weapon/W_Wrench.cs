@@ -31,8 +31,10 @@ public class W_Wrench : WeaponBase
             if ((tagName == "" || collider.gameObject.CompareTag(tagName)) && collider.gameObject.TryGetComponent(out IDamagable damagable))
             {
                 damagable.ApplyDamage(damage);
+                collider.gameObject.GetComponent<Rigidbody2D>();
             }
         }
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.wrench, this.transform.position);
     }
     
     public override bool Use()

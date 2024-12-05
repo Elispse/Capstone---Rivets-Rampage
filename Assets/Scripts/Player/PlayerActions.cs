@@ -37,7 +37,7 @@ public class PlayerActions : MonoBehaviour
 
     private void Update()
     {
-        if (held)
+        if (held & Time.timeScale != 0)
         {
             weapon.Use();
         }
