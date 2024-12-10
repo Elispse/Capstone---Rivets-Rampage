@@ -10,7 +10,8 @@ public class RoomManager : MonoBehaviour
     {
         SmallRoom,
         MediumRoom,
-        LargeRoom
+        LargeRoom,
+        BossRoom
     }
     [SerializeField] public RoomType roomType;
     [SerializeField] private Collider2D[] collider2Ds;
@@ -40,6 +41,10 @@ public class RoomManager : MonoBehaviour
             else if (roomType == RoomType.LargeRoom)
             {
                 numberOfEnemies = Random.Range(4, 8);
+            }
+            else if (roomType == RoomType.BossRoom)
+            {
+                numberOfEnemies = 1;
             }
             for (int i = 0; i < numberOfEnemies; i++)
             {

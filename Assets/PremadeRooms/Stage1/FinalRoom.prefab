@@ -1181,7 +1181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d061adf1e82e02249a4337fc1a3817ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomType: 2
+  roomType: 3
   collider2Ds:
   - {fileID: 9059616301649029164}
   - {fileID: 1436857002024386458}
@@ -1189,7 +1189,7 @@ MonoBehaviour:
   roomCompleteEvent: {fileID: 11400000, guid: 850231b871af38c42818701bc2fb4792, type: 2}
   endRoomEvent: {fileID: 11400000, guid: b0b89bbb3910cea408763924d2903c3e, type: 2}
   enemyList:
-  - {fileID: 708485392205921281, guid: 16d195ed89de87945a5795c71825f167, type: 3}
+  - {fileID: 708485392205921281, guid: 9e9b47d221d382a43b139acd2b2c2a10, type: 3}
   enemies: []
 --- !u!50 &2802896971650334697
 Rigidbody2D:
