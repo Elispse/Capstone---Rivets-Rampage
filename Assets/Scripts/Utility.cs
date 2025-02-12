@@ -11,4 +11,9 @@ public class Utility
 
         return new Vector3(x, y, 0);
     }
+
+    public float GetDistanceBetweenTwoPoints(Transform point1, Transform point2)
+    {
+        return Mathf.Sqrt(Mathf.Pow(point2.position.x - point1.position.x, 2) + Mathf.Pow(point2.position.y - point1.position.y, 2));
+    }
 }
