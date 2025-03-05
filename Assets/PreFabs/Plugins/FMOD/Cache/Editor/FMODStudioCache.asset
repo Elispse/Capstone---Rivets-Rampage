@@ -204,11 +204,38 @@ MonoBehaviour:
   Path: Audio-System-Rivets-Rampage-fmod-project/audio-system-rivets-rampage/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638738560703885564
+  lastModified: 638767196950836481
   FileSizes:
   - Name: Desktop
-    Value: 112352
+    Value: 119840
   Exists: 1
+--- !u!114 &-3148202536061512077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/MainMenuMusic
+  m_EditorClassIdentifier: 
+  Path: event:/Music/MainMenuMusic
+  Guid:
+    Data1: 1400843244
+    Data2: 1195107883
+    Data3: -1718670457
+    Data4: -401413836
+  Banks:
+  - {fileID: -522459437824784013}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 99989
 --- !u!114 &-3147894451899494397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +263,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-1961636085243678134
+--- !u!114 &-894387576914803921
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -278,7 +305,7 @@ MonoBehaviour:
   Path: Audio-System-Rivets-Rampage-fmod-project/audio-system-rivets-rampage/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638738560703502766
+  lastModified: 638767196931335334
   FileSizes:
   - Name: Desktop
     Value: 1486
@@ -298,7 +325,7 @@ MonoBehaviour:
   Path: Audio-System-Rivets-Rampage-fmod-project/audio-system-rivets-rampage/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638738560703876864
+  lastModified: 638767196949308098
   FileSizes:
   - Name: Desktop
     Value: 2011360
@@ -322,25 +349,53 @@ MonoBehaviour:
   - {fileID: -522459437824784013}
   - {fileID: 352253766499451262}
   EditorEvents:
-  - {fileID: -1961636085243678134}
   - {fileID: -4775616153999359453}
   - {fileID: 5678534453926428136}
   - {fileID: -6047822728007629697}
   - {fileID: -5617147999358829421}
   - {fileID: -3147894451899494397}
   - {fileID: -3761996015621566224}
-  - {fileID: 3286641946752093686}
   - {fileID: -5818025678959213122}
   - {fileID: -6519120976890315925}
   - {fileID: -5347371712507385218}
   - {fileID: 5871926724446438741}
+  - {fileID: -894387576914803921}
+  - {fileID: -3148202536061512077}
+  - {fileID: 351051846348249151}
   EditorParameters: []
   MasterBanks:
   - {fileID: -542922827977342851}
   StringsBanks:
   - {fileID: 2127440238114804455}
-  cacheTime: 638738560703885564
+  cacheTime: 638767196951443242
   cacheVersion: 131621
+--- !u!114 &351051846348249151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/BarrelExplosion
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/BarrelExplosion
+  Guid:
+    Data1: -905829345
+    Data2: 1208856156
+    Data3: -1545373547
+    Data4: 131642529
+  Banks:
+  - {fileID: -3208061292419262999}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &352253766499451262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +411,7 @@ MonoBehaviour:
   Path: Audio-System-Rivets-Rampage-fmod-project/audio-system-rivets-rampage/Build/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 638738560703885564
+  lastModified: 638767196951443242
   FileSizes:
   - Name: Desktop
     Value: 2816
@@ -376,38 +431,11 @@ MonoBehaviour:
   Path: Audio-System-Rivets-Rampage-fmod-project/audio-system-rivets-rampage/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638738560703507485
+  lastModified: 638767196931345197
   FileSizes:
   - Name: Desktop
-    Value: 1484
+    Value: 1530
   Exists: 1
---- !u!114 &3286641946752093686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/MainMenuMusic
-  m_EditorClassIdentifier: 
-  Path: event:/Music/MainMenuMusic
-  Guid:
-    Data1: 1400843244
-    Data2: 1195107883
-    Data3: -1718670457
-    Data4: -401413836
-  Banks:
-  - {fileID: -522459437824784013}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 99989
 --- !u!114 &5678534453926428136
 MonoBehaviour:
   m_ObjectHideFlags: 0

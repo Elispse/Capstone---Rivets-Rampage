@@ -25,6 +25,7 @@ public class FMODEvents : MonoBehaviour
 
     [field: Header("World SFX")]
     [field: SerializeField] public EventReference doorOpen { get; private set; }
+    [field: SerializeField] public EventReference barrelExplosion { get; private set; }
 
     [field: Header("UI SFX")]
     [field: SerializeField] public EventReference UIClick { get; private set; }

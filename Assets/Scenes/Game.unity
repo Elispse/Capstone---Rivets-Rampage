@@ -2935,6 +2935,13 @@ MonoBehaviour:
       Data3: -459832650
       Data4: 1642832898
     Path: event:/SFX/Door
+  <barrelExplosion>k__BackingField:
+    Guid:
+      Data1: -905829345
+      Data2: 1208856156
+      Data3: -1545373547
+      Data4: 131642529
+    Path: event:/SFX/BarrelExplosion
   <UIClick>k__BackingField:
     Guid:
       Data1: 445208100

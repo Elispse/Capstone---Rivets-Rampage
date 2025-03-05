@@ -131,7 +131,6 @@ public class Sparkplug : MonoBehaviour
     }
 
     private void Follow()
-
     {
         animator.SetBool("isWalking", true);
         agent.SetDestination(target.position);
