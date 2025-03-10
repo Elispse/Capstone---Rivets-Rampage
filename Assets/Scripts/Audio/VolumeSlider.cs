@@ -58,5 +58,6 @@ public class VolumeSlider : MonoBehaviour
                 Debug.LogWarning("Volume Type not supported: " + volumeType);
                 break;
         }
+        AudioManager.instance.SaveVolumeSettings();
     }
 }

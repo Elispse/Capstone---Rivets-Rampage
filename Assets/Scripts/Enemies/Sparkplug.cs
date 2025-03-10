@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using FMOD.Studio;
 using NavMeshPlus.Components;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem.Android;
 using UnityEngine.Tilemaps;
 
-public class Sparkplug : MonoBehaviour
+public class Sparkplug : MonoBehaviour, IDamagable
 {
     Transform target;
     [SerializeField] int segments;
@@ -15,18 +17,23 @@ public class Sparkplug : MonoBehaviour
     [SerializeField] private float health = 10;
     [SerializeField] private float pointRadius = 10;
     [SerializeField] private GameObject healthDrop;
+    [SerializeField] private WeaponBase weapon;
 
     private NavMeshAgent agent;
     private NavMeshData navData;
     private Animator animator;
     private Utility utility = new Utility();
     private DamageFlash damageFlash;
+    private Rigidbody2D rb;
 
     private int distance = 3;
     private float rayDirection = 0;
     private bool wanderSpot = true;
     private bool castRay = true;
+    private bool isKnockedBack = false;
+    private Vector3 playerPosition;
     public bool targetFound { get; set; }
+
 
     private EventInstance enemyFootsteps;
 
@@ -41,7 +48,8 @@ public class Sparkplug : MonoBehaviour
         agent.updateUpAxis = false;
         damageFlash = GetComponent<DamageFlash>();
         targetFound = false;
-
+        rb = GetComponent<Rigidbody2D>();
+        
         enemyFootsteps = AudioManager.instance.CreateInstance(FMODEvents.instance.enemyWalk);
     }
 
@@ -56,6 +64,7 @@ public class Sparkplug : MonoBehaviour
 
     private void FixedUpdate()
     {
+        playerPosition = GameObject.Find("Player").transform.position;
         if (castRay && !targetFound)
         {
             StartCoroutine(RayCastCR());
@@ -132,12 +141,30 @@ public class Sparkplug : MonoBehaviour
 
     private void Follow()
     {
+        bool strafing = false;
         animator.SetBool("isWalking", true);
-        agent.SetDestination(target.position);
-        animator.SetFloat("CurX", agent.velocity.x);
-        animator.SetFloat("CurY", agent.velocity.y);
+        
+        float distance = utility.GetDistanceBetweenTwoPoints(transform.position, playerPosition);
+        if (distance <= 5f !& strafing)
+        {
+            strafing = true;
+            Vector3 newDestination = utility.GetRandomPositionAroundObject(GameObject.Find("Player").transform.position, 5, 0, 360);
+            agent.SetDestination(newDestination);
+            animator.SetFloat("CurX", playerPosition.x);
+            animator.SetFloat("CurY", playerPosition.y);
+        }
+        else if (distance > 5f)
+        {
+            agent.SetDestination(target.position);
+            animator.SetFloat("CurX", agent.velocity.x);
+            animator.SetFloat("CurY", agent.velocity.y);
+            Fire();
+        }
 
-        float distance = utility.GetDistanceBetweenTwoPoints(transform, target.transform);
+        if (agent.remainingDistance <= 0.2 && strafing)
+        {
+            strafing = false;
+        }
     }
 
     private void Wander()
@@ -168,7 +195,7 @@ public class Sparkplug : MonoBehaviour
     {
         wanderSpot = false;
         yield return new WaitForSeconds(time);
-        Vector3 randomDirection = Random.insideUnitSphere * pointRadius;
+        Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * pointRadius;
         randomDirection += transform.position;
         RaycastHit2D hit = Physics2D.Raycast(randomDirection, Vector2.up);
         if (hit.collider != null && hit.collider.gameObject.name == "Floor" && hit.collider.gameObject.GetComponent<TilemapCollider2D>())
@@ -202,13 +229,40 @@ public class Sparkplug : MonoBehaviour
 
     private void GenerateDrops()
     {
-        int rand = Random.Range(1, 5);
+        int rand = UnityEngine.Random.Range(1, 5);
 
         if (rand == 2)
         {
             GameObject newObject = Instantiate(healthDrop);
             newObject.transform.position = gameObject.transform.position;
         }
+    }
+
+    public void ApplyKnockback(Vector3 direction, float force, float duration)
+    {
+        if (!isKnockedBack)
+        {
+            isKnockedBack = true;
+            rb.velocity = direction * force;
+
+            StartCoroutine(KnockbackRecovery(duration)); // Wait before allowing movement again
+        }
+    }
+
+    private IEnumerator KnockbackRecovery(float duration)
+    {
+        agent.isStopped = true;
+        yield return new WaitForSeconds(duration);
+        agent.isStopped = false;
+        isKnockedBack = false;
+    }
+
+    private void Fire()
+    {
+        agent.isStopped = true;
+        quaternion angletoEnemy = utility.GetAngleBetweenTwoPoints(transform.position, playerPosition);
+
+        Instantiate(weapon, transform.position, angletoEnemy);
     }
 
     public void FoundTarget()

@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 5145679589112473718}
   - component: {fileID: 2376959613104177485}
   - component: {fileID: 1067757801283986193}
-  - component: {fileID: 8991755810649593742}
   - component: {fileID: 8979409494521999546}
   m_Layer: 0
   m_Name: Sparkplug
@@ -229,24 +228,6 @@ MonoBehaviour:
   health: 10
   pointRadius: 7.5
   healthDrop: {fileID: 597064320736751726, guid: 21c889dec9b8ba749b92ef2af453539a, type: 3}
---- !u!114 &8991755810649593742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 708485392205921281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 200ca6b54838c194caf9a825e93b3e54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  segments: 5
-  navMeshSurface: {fileID: 0}
-  damage: 1
-  health: 6
-  pointRadius: 7.5
-  healthDrop: {fileID: 597064320736751726, guid: 21c889dec9b8ba749b92ef2af453539a, type: 3}
 --- !u!114 &8979409494521999546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,8 +244,8 @@ MonoBehaviour:
   listener:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8991755810649593742}
-        m_TargetAssemblyTypeName: BasicAI, Assembly-CSharp
+      - m_Target: {fileID: 1067757801283986193}
+        m_TargetAssemblyTypeName: Sparkplug, Assembly-CSharp
         m_MethodName: FoundTarget
         m_Mode: 1
         m_Arguments:

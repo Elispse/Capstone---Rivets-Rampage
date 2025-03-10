@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private WeaponParent weaponParent;
     private bool movementChange = false;
     private bool change = false;
+    private bool isKnockedBack = false;
 
     private EventInstance playerFootsteps;
 
@@ -42,7 +43,10 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = moveInput * moveSpeed * Time.deltaTime;
+        if (!isKnockedBack)
+        {
+            rb.velocity = moveInput * moveSpeed * Time.deltaTime;
+        }
         mousePos = GetPointerInput();
         weaponParent.pointerPosition = mousePos;
         if (playerActions.held)
@@ -109,6 +113,24 @@ public class PlayerMovement : MonoBehaviour
             playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
         }
     }
+
+    public void ApplyKnockback(Vector2 direction, float force, float duration)
+    {
+        if (!isKnockedBack)
+        {
+            isKnockedBack = true;
+            rb.velocity = direction * force; // Apply the knockback
+
+            StartCoroutine(KnockbackRecovery(duration)); // Wait before allowing movement again
+        }
+    }
+     
+    private IEnumerator KnockbackRecovery(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        isKnockedBack = false;
+    }
+
 
     IEnumerator movementChangeCR(float time)
     {

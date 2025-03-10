@@ -4,6 +4,7 @@ using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class AudioManager : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class AudioManager : MonoBehaviour
 
     private EventInstance musicEventInstance;
 
+    private string saveFilePath;
+
     public static AudioManager instance { get; private set; }
 
     private void Start()
@@ -33,6 +36,8 @@ public class AudioManager : MonoBehaviour
         {
             InitMusic(FMODEvents.instance.menuMusic);
         }
+
+        
     }
 
     private void Awake()
@@ -48,6 +53,12 @@ public class AudioManager : MonoBehaviour
         masterBus = RuntimeManager.GetBus("bus:/");
         musicBus = RuntimeManager.GetBus("bus:/Music");
         sfxBus = RuntimeManager.GetBus("bus:/SFX");
+
+        // Set the save file path
+        saveFilePath = Path.Combine(Application.persistentDataPath, "volumeSettings.json");
+
+        // Load volume settings on start
+        LoadVolumeSettings();
     }
 
     private void Update()
@@ -101,5 +112,40 @@ public class AudioManager : MonoBehaviour
     private void OnDestroy()
     {
         CleanUp();
+    }
+
+    // Save volume settings to a JSON file
+    public void SaveVolumeSettings()
+    {
+        VolumeSettings settings = new VolumeSettings
+        {
+            masterVolume = masterVolume.value,
+            musicVolume = musicVolume.value,
+            sfxVolume = sfxVolume.value
+        };
+
+        string json = JsonUtility.ToJson(settings, true);
+        File.WriteAllText(saveFilePath, json);
+        Debug.Log("Volume settings saved to: " + saveFilePath);
+    }
+
+    // Load volume settings from a JSON file
+    public void LoadVolumeSettings()
+    {
+        if (File.Exists(saveFilePath))
+        {
+            string json = File.ReadAllText(saveFilePath);
+            VolumeSettings settings = JsonUtility.FromJson<VolumeSettings>(json);
+
+            masterVolume.value = settings.masterVolume;
+            musicVolume.value = settings.musicVolume;
+            sfxVolume.value = settings.sfxVolume;
+
+            Debug.Log("Volume settings loaded from: " + saveFilePath);
+        }
+        else
+        {
+            Debug.Log("No saved volume settings found. Using default values.");
+        }
     }
 }

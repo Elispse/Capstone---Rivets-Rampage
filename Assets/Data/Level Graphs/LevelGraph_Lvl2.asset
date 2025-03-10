@@ -117,7 +117,7 @@ MonoBehaviour:
   Position: {x: 400, y: 160}
   Name: StartRoom
   IndividualRoomTemplates:
-  - {fileID: 6192943430414626050, guid: 60bdf10f47995c843bdcc0a022de471e, type: 3}
+  - {fileID: 6192943430414626050, guid: 1dedc2ab52501f84e835663e2f28d4cb, type: 3}
   RoomTemplateSets: []
 --- !u!114 &-2814750264276084011
 MonoBehaviour:
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8400baee4cafd34091c865089a167b2, type: 3}
-  m_Name: LevelGraph1
+  m_Name: LevelGraph_Lvl2
   m_EditorClassIdentifier: 
   Connections:
   - {fileID: -7230279829115706838}
@@ -199,32 +199,32 @@ MonoBehaviour:
   - {fileID: -7352014312636053438}
   - {fileID: -7702677963994869871}
   CorridorIndividualRoomTemplates:
-  - {fileID: 5997070204136329801, guid: 681e141fdfff7b44f869f24b78aa9012, type: 3}
-  - {fileID: 1095062830284779841, guid: 662bcc8cdc7506e468bbbddedb61c980, type: 3}
-  - {fileID: 5785787102033496779, guid: c281d4036420be84299508227dfa61ee, type: 3}
-  - {fileID: 5785787102033496779, guid: fada9de15318e5c419ddaff167f253a3, type: 3}
-  - {fileID: 1095062830284779841, guid: 66dfc7f4b454db243b752b057e9b918d, type: 3}
-  - {fileID: 5997070204136329801, guid: 87182c503b9dcff4bb134445903e2ee9, type: 3}
-  - {fileID: 5997070204136329801, guid: f5f6090fe89849c4ab9537a684294a8c, type: 3}
-  - {fileID: 5997070204136329801, guid: 9e610c1d671e0b541a7fa28a37eba4a2, type: 3}
-  - {fileID: 1095062830284779841, guid: da160659e8e693941a4d9fa323b447b1, type: 3}
-  - {fileID: 1095062830284779841, guid: 85e438d02bad1d649ab11562048b940c, type: 3}
-  - {fileID: 5785787102033496779, guid: 066165aeb18ab9741b069fd92d8fe415, type: 3}
-  - {fileID: 5785787102033496779, guid: 8bf5e65eb955ce248a288db245812c2b, type: 3}
-  - {fileID: 5785787102033496779, guid: 51db89df556daf4489d2363d61649372, type: 3}
-  - {fileID: 5785787102033496779, guid: f47a4f6feb9b4e14b9c320c1fa5fbc14, type: 3}
+  - {fileID: 5997070204136329801, guid: 4bb5c03ba21ad704e91bee53eb723bd7, type: 3}
+  - {fileID: 1095062830284779841, guid: dfe959d0a5d53d74fb3f261a2901701b, type: 3}
+  - {fileID: 5785787102033496779, guid: 5aa2d4792ccac0247b1dd0924f206e16, type: 3}
+  - {fileID: 5785787102033496779, guid: a7637779e81fe0d4288cc473e37ca497, type: 3}
+  - {fileID: 1095062830284779841, guid: 00cd603903051524582f6aad12c7afa2, type: 3}
+  - {fileID: 5997070204136329801, guid: f822ccd75c1b6e24d996129caebb782f, type: 3}
+  - {fileID: 5997070204136329801, guid: 0842b070e088fbb45b35d2f0fb4c3166, type: 3}
+  - {fileID: 5997070204136329801, guid: bc4206af80eb3fc41b8fabd22487be17, type: 3}
+  - {fileID: 1095062830284779841, guid: 3a7ba6077fca9694e84f1736200c4371, type: 3}
+  - {fileID: 1095062830284779841, guid: 6e2eabc82d9b61c43922282739fcf7de, type: 3}
+  - {fileID: 5785787102033496779, guid: 8d7b1d7632d572d408b0f2bc37a4d3fd, type: 3}
+  - {fileID: 5785787102033496779, guid: a4a443fcc44d77d4293c56dd2756f399, type: 3}
+  - {fileID: 5785787102033496779, guid: 8d5c652e7a54c3e429c45ab74cd68ef8, type: 3}
+  - {fileID: 5785787102033496779, guid: b94500f8331c68a41a3ac3c5e09672e6, type: 3}
   CorridorRoomTemplateSets: []
   DefaultIndividualRoomTemplates:
-  - {fileID: 44197790502117703, guid: 3502e2a3862e0734593ad0aab7571716, type: 3}
-  - {fileID: 3138805187275220606, guid: 2db9d1f2096b72344818241f9d3e6c16, type: 3}
-  - {fileID: 4255991365386945211, guid: 957b16ac57efee748a52778a5df379eb, type: 3}
-  - {fileID: 9006150900375750522, guid: dba904e413babdf4283487438881620c, type: 3}
-  - {fileID: 6192943430414626050, guid: 5b55665348e10f74c85cae26fc0ae6a0, type: 3}
-  - {fileID: 3484018106342118169, guid: ad60f680d04055e47b44bd1245c0131f, type: 3}
+  - {fileID: 44197790502117703, guid: b2ac8fbebb968d04697ae54ac541ad18, type: 3}
+  - {fileID: 3138805187275220606, guid: 010ba83c607d6c14f95d7d7284f9dc2f, type: 3}
+  - {fileID: 4255991365386945211, guid: 5c6ddadd6bac3074b84969b2a63d8626, type: 3}
+  - {fileID: 9006150900375750522, guid: 4d2e719e11fc58a4886417d58d7a9dba, type: 3}
+  - {fileID: 6192943430414626050, guid: 1dedd585f713f904bb8a9e2fd641d9ae, type: 3}
+  - {fileID: 3484018106342118169, guid: 3e97edf22fad59e4285ae89fcf6e989c, type: 3}
   - {fileID: 3484018106342118169, guid: 6475d90af6b420a48a90ea3ae71f0877, type: 3}
-  - {fileID: 222655026071207092, guid: 43b36ef98e8f0a446ab7c8f33717eb89, type: 3}
-  - {fileID: 222655026071207092, guid: b93530afe041a814bb2e964d84781fda, type: 3}
-  - {fileID: 763672616434978366, guid: 44e34f2bea3224949851fde84f091ecb, type: 3}
+  - {fileID: 222655026071207092, guid: 3a8506e6816f79d48a9757a7b700a00d, type: 3}
+  - {fileID: 222655026071207092, guid: 4c066b3c4008f3c4a85d26ad45329b6d, type: 3}
+  - {fileID: 763672616434978366, guid: 74b8973d22807ce4fa30280fd8ac595e, type: 3}
   DefaultRoomTemplateSets: []
   Rooms:
   - {fileID: -6622229955961491855}
@@ -237,8 +237,8 @@ MonoBehaviour:
   - {fileID: -6253550413306197205}
   - {fileID: 2666785861933754981}
   EditorData:
-    PanOffset: {x: -0.5401428, y: -34.25372}
-    Zoom: 0.91218764
+    PanOffset: {x: -27.623283, y: 154.07394}
+    Zoom: 0.81275916
   RoomType: Edgar.Unity.Room
   ConnectionType: Edgar.Unity.Connection
 --- !u!114 &262926027826082931
