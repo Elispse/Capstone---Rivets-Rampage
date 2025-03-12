@@ -6,11 +6,14 @@ using UnityEngine;
 public class FinalDoor : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private VoidEvent gameEnd;
+    [SerializeField] private VoidEvent stageEnd;
+
+    private bool roomComplete = false;
     
     public void DoorOpens()
     {
         animator.SetTrigger("DoorAnim");
+        roomComplete = true;
     }
 
     public void ColliderOn()
@@ -20,7 +23,10 @@ public class FinalDoor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.gameWon, this.transform.position);
-        gameEnd.RaiseEvent();
+        if (collision.gameObject.name == "Player" &&  roomComplete == true)
+        {
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.gameWon, this.transform.position);
+            stageEnd.RaiseEvent();
+        }
     }
 }

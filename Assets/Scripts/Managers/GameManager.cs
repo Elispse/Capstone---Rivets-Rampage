@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject optionsUI;
     [SerializeField] private GameObject wonUI;
     [SerializeField] private GameObject deadUI;
+    [SerializeField] private GameObject continueUI;
 
     [SerializeField] private Sprite heartFull;
     [SerializeField] private Sprite heartHalf;
@@ -44,7 +45,6 @@ public class GameManager : MonoBehaviour
     {
         Surface2D.BuildNavMeshAsync();
         roomComplete = generator.GetComponent<RoomComplete>();
-        sceneToLoad = "MainMenu";
     }
 
     private void Update()
@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        sceneToLoad = "Game";
+        sceneToLoad = "Stage1";
         StartCoroutine(LoadSceneASync());
     }
 
@@ -148,14 +148,27 @@ public class GameManager : MonoBehaviour
         state = GameState.GAME_OVER;
     }
 
-    public void PlayerWon()
+    public void StageHander()
     {
-        pauseUI.SetActive(false);
-        playerUI.SetActive(false);
-        loadingUI.SetActive(false);
-        deadUI.SetActive(false);
-        wonUI.SetActive(true);
-        state = GameState.GAME_OVER;
+        if (sceneToLoad == "Stage2")
+        {
+            pauseUI.SetActive(false);
+            playerUI.SetActive(false);
+            loadingUI.SetActive(false);
+            deadUI.SetActive(false);
+            wonUI.SetActive(false);
+            StartCoroutine(LoadSceneASync());
+            sceneToLoad = "MainMenu";
+        }
+        else if (sceneToLoad == "MainMenu")
+        {
+            pauseUI.SetActive(false);
+            playerUI.SetActive(false);
+            loadingUI.SetActive(false);
+            deadUI.SetActive(false);
+            wonUI.SetActive(true);
+            state = GameState.GAME_OVER;
+        }
     }
 
     public void LoseHealth()
