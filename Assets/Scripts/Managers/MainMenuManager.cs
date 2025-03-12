@@ -9,7 +9,8 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject optionScreen;
     [SerializeField] private GameObject creditScreen;
     [SerializeField] private GameObject loadingScreen;
-
+    [SerializeField] private BoolVariable gameLoaded;
+ 
     [SerializeField] private string sceneToLoad;
 
     public void StartGame()
@@ -19,6 +20,7 @@ public class MainMenuManager : MonoBehaviour
         creditScreen.SetActive(false);
         loadingScreen.SetActive(true);
         AudioManager.instance.PlayOneShot(FMODEvents.instance.UIClick, this.transform.position);
+        sceneToLoad = "Stage1";
         StartCoroutine(LoadSceneASync());
     }
 
@@ -36,6 +38,18 @@ public class MainMenuManager : MonoBehaviour
         optionScreen.SetActive(true);
         creditScreen.SetActive(false);
         AudioManager.instance.PlayOneShot(FMODEvents.instance.UIClick, this.transform.position);
+    }
+
+    public void LoadGame()
+    {
+        mainScreen.SetActive(false);
+        optionScreen.SetActive(false);
+        creditScreen.SetActive(false);
+        loadingScreen.SetActive(true);
+        sceneToLoad = "Stage2";
+        gameLoaded.value = true;
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.UIClick, this.transform.position);
+        StartCoroutine(LoadSceneASync());
     }
 
     public void CreditMenu()

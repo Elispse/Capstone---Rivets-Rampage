@@ -18,7 +18,7 @@ public class Sparkplug_Shotgun : WeaponBase
 
     public override void Attack()
     {
-        Vector3 attackDirection = 
+        Vector3 attackDirection = Vector3.zero;
     }
 
     public override bool Use()

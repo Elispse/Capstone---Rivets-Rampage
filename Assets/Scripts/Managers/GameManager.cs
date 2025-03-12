@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string sceneToLoad;
 
     [SerializeField] private FloatVariable playerHealth;
+    [SerializeField] private BoolVariable loadedGame;
 
     [SerializeField] private VoidEvent destroyAllEnemies;
 
@@ -79,6 +80,7 @@ public class GameManager : MonoBehaviour
 
     public void MainMenu()
     {
+        sceneToLoad = "MainMenu";
         pauseUI.SetActive(false);
         playerUI.SetActive(false);
         loadingUI.SetActive(true);
@@ -170,6 +172,9 @@ public class GameManager : MonoBehaviour
             state = GameState.GAME_OVER;
         }
     }
+
+
+
 
     public void LoseHealth()
     {
