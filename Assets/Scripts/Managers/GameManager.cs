@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        sceneToLoad = "Game";
+        sceneToLoad = "Stage1";
         StartCoroutine(LoadSceneASync());
     }
 

@@ -18,6 +18,9 @@ public class Sparkplug : MonoBehaviour, IDamagable
     [SerializeField] private float pointRadius = 10;
     [SerializeField] private GameObject healthDrop;
     [SerializeField] private WeaponBase weapon;
+    [SerializeField, Range(1, 50)] int fireForce = 20;
+    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] Transform firePoint; 
 
     private NavMeshAgent agent;
     private NavMeshData navData;
@@ -31,7 +34,9 @@ public class Sparkplug : MonoBehaviour, IDamagable
     private bool wanderSpot = true;
     private bool castRay = true;
     private bool isKnockedBack = false;
+    private bool isReload = false;
     private Vector3 playerPosition;
+    private GameObject bullet;
     public bool targetFound { get; set; }
 
 
@@ -259,10 +264,11 @@ public class Sparkplug : MonoBehaviour, IDamagable
 
     private void Fire()
     {
-        agent.isStopped = true;
-        quaternion angletoEnemy = utility.GetAngleBetweenTwoPoints(transform.position, playerPosition);
-
-        Instantiate(weapon, transform.position, angletoEnemy);
+        Vector3 attackDirection = ((Vector2)playerPosition - (Vector2)this.gameObject.transform.position).normalized;
+        var finalPos = this.gameObject.transform.position + attackDirection;
+        bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        bullet.GetComponent<Projectile>().Damage = damage;
+        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.right * fireForce, ForceMode2D.Impulse);
     }
 
     public void FoundTarget()
