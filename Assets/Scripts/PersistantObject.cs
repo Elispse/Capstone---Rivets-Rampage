@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class PersistentObject : MonoBehaviour
@@ -7,33 +8,69 @@ public class PersistentObject : MonoBehaviour
     [SerializeField]
     private string[] persistentScenes;
 
+    private static EventSystem persistentEventSystem;
+    private static Canvas persistentCanvas;
     private void Awake()
     {
-        // Make the GameObject persistent
-        DontDestroyOnLoad(gameObject);
+        // Check if this object is an EventSystem
+        if (TryGetComponent(out EventSystem eventSystem))
+        {
+            // Handle EventSystem persistence
+            if (persistentEventSystem != null && persistentEventSystem != eventSystem)
+            {
+                Destroy(gameObject); // Destroy duplicate EventSystem
+                return;
+            }
 
-        // Subscribe to the scene loaded event
-        SceneManager.sceneLoaded += OnSceneLoaded;
+            persistentEventSystem = eventSystem;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (TryGetComponent(out Canvas canvas))
+        {
+            if (persistentCanvas != null && persistentCanvas != canvas)
+            {
+                Destroy(gameObject); // Destroy duplicate Canvas
+                return;
+            }
+
+            persistentCanvas = canvas;
+            DontDestroyOnLoad(gameObject);
+
+            canvas.sortingOrder = 0;
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Check if the current scene is in the list of persistent scenes
-        bool shouldPersist = false;
-        foreach (string sceneName in persistentScenes)
-        {
-            if (scene.name == sceneName)
-            {
-                shouldPersist = true;
-                break;
-            }
-        }
-
-        // Destroy the GameObject if it shouldn't persist in the current scene
-        if (!shouldPersist)
+        if (!IsEventSystem() && !IsCanvas() && !IsScenePersistent(scene.name))
         {
             SceneManager.sceneLoaded -= OnSceneLoaded; // Unsubscribe to avoid memory leaks
             Destroy(gameObject);
         }
+    }
+
+    private bool IsScenePersistent(string sceneName)
+    {
+        foreach (string persistentScene in persistentScenes)
+        {
+            if (sceneName == persistentScene)
+                return true;
+        }
+        return false;
+    }
+
+    private bool IsEventSystem()
+    {
+        return GetComponent<EventSystem>() != null;
+    }
+
+    private bool IsCanvas()
+    {
+        return GetComponent<EventSystem>() != null;
     }
 }

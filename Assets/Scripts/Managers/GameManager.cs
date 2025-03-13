@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     private bool gamePaused = false;
     private bool options = false;
 
+    public static GameManager Instance { get; private set; }
+
     private void Start()
     {
         Surface2D.BuildNavMeshAsync();
@@ -51,6 +53,17 @@ public class GameManager : MonoBehaviour
         {
             LoadSavedState();
         }
+    }
+
+    private void Awake()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject); // Destroy duplicate
+            return;
+        }
+        Instance = this;
     }
 
     private void Update()
@@ -66,7 +79,6 @@ public class GameManager : MonoBehaviour
                     player.transform.position = GameObject.Find("SpawnPoint").transform.position;
                     loadingUI.SetActive(false);
                     playerUI.SetActive(true);
-                    Time.timeScale = 1;
                     playerHealth.value = 6;
                     state = GameState.PLAY_GAME;
                 }
@@ -180,10 +192,13 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextStage()
     {
-        Console.WriteLine("LoadingStage");
+        Debug.Log("Loading stage");
         sceneToLoad = "Stage2";
-        LoadSceneASync();
         AudioManager.instance.PlayOneShot(FMODEvents.instance.UIClick, this.transform.position);
+        state = GameState.PAUSE_GAME;
+        loadingUI.SetActive(true);
+        continueUI.SetActive(false);
+        StartCoroutine(LoadSceneASync());
     }
 
     public void LoseHealth()
@@ -245,6 +260,20 @@ public class GameManager : MonoBehaviour
         destroyAllEnemies.RaiseEvent();
     }
 
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("Scene Loaded: " + scene.name);
+        player.transform.position = GameObject.Find("SpawnPoint").transform.position;
+        pauseUI.SetActive(false);
+        loadingUI.SetActive(false);
+        deadUI.SetActive(false);
+        wonUI.SetActive(false);
+        continueUI.SetActive(false);
+        playerUI.SetActive(true);
+        Surface2D.BuildNavMeshAsync();
+        state = GameState.PLAY_GAME;
+    }
+
     private IEnumerator LoadSceneASync()
     {
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneToLoad);
@@ -252,6 +281,14 @@ public class GameManager : MonoBehaviour
         {
             loadingUI.GetComponentInChildren<Animator>().Play("TimingBelt");
             yield return null;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
     }
 }

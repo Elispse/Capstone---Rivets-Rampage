@@ -10,6 +10,8 @@ public class PlayerMain : MonoBehaviour, IDamagable, IHealable, IScoreable
     [SerializeField] private VoidEvent healEvent;
     [SerializeField] private VoidEvent deadEvent;
 
+    public static PlayerMain Instance { get; private set; }
+
     private DamageFlash damageFlash;
 
     private bool isHit = false;
@@ -17,6 +19,13 @@ public class PlayerMain : MonoBehaviour, IDamagable, IHealable, IScoreable
     private void Awake()
     {
         damageFlash = GetComponent<DamageFlash>();
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject); // Destroy duplicate
+            return;
+        }
+        Instance = this;
     }
     public void AddScore(int score)
     {
