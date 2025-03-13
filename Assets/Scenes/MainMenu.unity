@@ -2591,6 +2591,7 @@ MonoBehaviour:
   optionScreen: {fileID: 1061556374}
   creditScreen: {fileID: 1302157773}
   loadingScreen: {fileID: 544241303}
+  gameLoaded: {fileID: 11400000, guid: f87cd1dbcf1758f4886bc58a79ab0e22, type: 2}
   sceneToLoad: Stage1
 --- !u!1 &688701756
 GameObject:

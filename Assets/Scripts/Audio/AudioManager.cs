@@ -36,8 +36,6 @@ public class AudioManager : MonoBehaviour
         {
             InitMusic(FMODEvents.instance.menuMusic);
         }
-
-        
     }
 
     private void Awake()

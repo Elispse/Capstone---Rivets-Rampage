@@ -13,6 +13,11 @@ public class MainMenuManager : MonoBehaviour
  
     [SerializeField] private string sceneToLoad;
 
+    private void Awake()
+    {
+        gameLoaded.value = false;
+    }
+
     public void StartGame()
     {
         mainScreen.SetActive(false);

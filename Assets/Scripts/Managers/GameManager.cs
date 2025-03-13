@@ -1,4 +1,5 @@
 using NavMeshPlus.Components;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -46,6 +47,10 @@ public class GameManager : MonoBehaviour
     {
         Surface2D.BuildNavMeshAsync();
         roomComplete = generator.GetComponent<RoomComplete>();
+        if (loadedGame.value == true)
+        {
+            LoadSavedState();
+        }
     }
 
     private void Update()
@@ -159,8 +164,8 @@ public class GameManager : MonoBehaviour
             loadingUI.SetActive(false);
             deadUI.SetActive(false);
             wonUI.SetActive(false);
-            StartCoroutine(LoadSceneASync());
-            sceneToLoad = "MainMenu";
+            continueUI.SetActive(true);
+            state = GameState.PAUSE_GAME;
         }
         else if (sceneToLoad == "MainMenu")
         {
@@ -173,8 +178,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-
+    public void LoadNextStage()
+    {
+        Console.WriteLine("LoadingStage");
+        sceneToLoad = "Stage2";
+        LoadSceneASync();
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.UIClick, this.transform.position);
+    }
 
     public void LoseHealth()
     {
@@ -218,6 +228,16 @@ public class GameManager : MonoBehaviour
                 playerUI.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = heartHalf;
                 break;
         }
+    }
+
+    public void LoadSavedState()
+    {
+        
+    }
+
+    public void SaveGameState()
+    {
+        
     }
 
     public void DestroyAllEnemies()

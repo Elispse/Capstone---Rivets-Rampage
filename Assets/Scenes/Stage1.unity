@@ -658,7 +658,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2002043222}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: RestartGame
+        m_MethodName: SaveGameState
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3015,7 +3015,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &556400836
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3104,13 +3104,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641490127}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1063132343}
-  m_Father: {fileID: 1006756334}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &641490129
 MonoBehaviour:
@@ -3260,40 +3260,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2019061839830944033, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
   m_PrefabInstance: {fileID: 4684236915337276578}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1006756333
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1006756334}
-  m_Layer: 0
-  m_Name: Managers
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1006756334
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1006756333}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2002043223}
-  - {fileID: 641490128}
-  - {fileID: 1447551809}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1045876416 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6809619658921032174, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
@@ -4237,7 +4203,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2002043222}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: RestartGame
+        m_MethodName: LoadNextStage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4309,12 +4275,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1447551808}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1006756334}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1613086682
 MonoBehaviour:
@@ -4740,12 +4706,13 @@ MonoBehaviour:
   optionsUI: {fileID: 1046803285}
   wonUI: {fileID: 207014326}
   deadUI: {fileID: 72703552}
-  continueUI: {fileID: 0}
+  continueUI: {fileID: 556400835}
   heartFull: {fileID: -2064123705, guid: 61747b6ece4d5df49aae26243d8bd84f, type: 3}
   heartHalf: {fileID: -148001818, guid: 61747b6ece4d5df49aae26243d8bd84f, type: 3}
   heartEmpty: {fileID: -915552264, guid: 61747b6ece4d5df49aae26243d8bd84f, type: 3}
   sceneToLoad: Stage2
   playerHealth: {fileID: 11400000, guid: a5e20c478fc33df4babf08bbc555a02c, type: 2}
+  loadedGame: {fileID: 11400000, guid: f87cd1dbcf1758f4886bc58a79ab0e22, type: 2}
   destroyAllEnemies: {fileID: 11400000, guid: 24d226c8d82fb2a49a1732dd4ff032f3, type: 2}
 --- !u!4 &2002043223
 Transform:
@@ -4760,7 +4727,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1006756334}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2002043224
 MonoBehaviour:
@@ -4919,7 +4886,7 @@ PrefabInstance:
       objectReference: {fileID: 2002043222}
     - target: {fileID: 374663515563833893, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 533710106397848816, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
       propertyPath: m_Pivot.x
@@ -5035,7 +5002,7 @@ PrefabInstance:
       objectReference: {fileID: 2002043222}
     - target: {fileID: 5085343399218069110, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
       propertyPath: m_UiScaleMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5085343399218069110, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
       propertyPath: m_ReferenceResolution.x
@@ -5051,7 +5018,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5904385097510334568, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 20.700073
+      value: 20.700195
+      objectReference: {fileID: 0}
+    - target: {fileID: 5904385097510334568, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 11.840088
       objectReference: {fileID: 0}
     - target: {fileID: 6134889143408877132, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
       propertyPath: m_Camera
@@ -5121,4 +5092,6 @@ SceneRoots:
   - {fileID: 1808722951}
   - {fileID: 169790621}
   - {fileID: 241108738}
-  - {fileID: 1006756334}
+  - {fileID: 2002043223}
+  - {fileID: 641490128}
+  - {fileID: 1447551809}
