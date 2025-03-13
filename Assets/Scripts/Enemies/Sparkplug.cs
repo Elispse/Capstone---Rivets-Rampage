@@ -18,9 +18,10 @@ public class Sparkplug : MonoBehaviour, IDamagable
     [SerializeField] private float pointRadius = 10;
     [SerializeField] private GameObject healthDrop;
     [SerializeField] private WeaponBase weapon;
-    [SerializeField, Range(1, 50)] int fireForce = 20;
+    [SerializeField, Range(1, 50)] int fireForce = 5;
     [SerializeField] GameObject bulletPrefab;
-    [SerializeField] Transform firePoint; 
+    [SerializeField] Transform firePoint;
+    [SerializeField] private float fireCooldown = 2f;
 
     private NavMeshAgent agent;
     private NavMeshData navData;
@@ -39,6 +40,8 @@ public class Sparkplug : MonoBehaviour, IDamagable
     private GameObject bullet;
     public bool targetFound { get; set; }
 
+    private float nextFireTime = 0f;
+
 
     private EventInstance enemyFootsteps;
 
@@ -54,7 +57,7 @@ public class Sparkplug : MonoBehaviour, IDamagable
         damageFlash = GetComponent<DamageFlash>();
         targetFound = false;
         rb = GetComponent<Rigidbody2D>();
-        
+
         enemyFootsteps = AudioManager.instance.CreateInstance(FMODEvents.instance.enemyWalk);
     }
 
@@ -148,9 +151,9 @@ public class Sparkplug : MonoBehaviour, IDamagable
     {
         bool strafing = false;
         animator.SetBool("isWalking", true);
-        
+
         float distance = utility.GetDistanceBetweenTwoPoints(transform.position, playerPosition);
-        if (distance <= 5f !& strafing)
+        if (distance <= 5f! & strafing)
         {
             strafing = true;
             Vector3 newDestination = utility.GetRandomPositionAroundObject(GameObject.Find("Player").transform.position, 5, 0, 360);
@@ -158,12 +161,16 @@ public class Sparkplug : MonoBehaviour, IDamagable
             animator.SetFloat("CurX", playerPosition.x);
             animator.SetFloat("CurY", playerPosition.y);
         }
-        else if (distance > 5f)
+        else if (distance > 3f)
         {
             agent.SetDestination(target.position);
             animator.SetFloat("CurX", agent.velocity.x);
             animator.SetFloat("CurY", agent.velocity.y);
-            Fire();
+            if (Time.time >= nextFireTime)
+            {
+                Fire();
+                nextFireTime = Time.time + fireCooldown; // Reset the cooldown timer
+            }
         }
 
         if (agent.remainingDistance <= 0.2 && strafing)
@@ -264,12 +271,35 @@ public class Sparkplug : MonoBehaviour, IDamagable
 
     private void Fire()
     {
-        Vector3 attackDirection = ((Vector2)playerPosition - (Vector2)this.gameObject.transform.position).normalized;
-        var finalPos = this.gameObject.transform.position + attackDirection;
-        bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        bullet.GetComponent<Projectile>().Damage = damage;
-        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.right * fireForce, ForceMode2D.Impulse);
+        int projectileCount = 5;
+        float spreadAngle = 60f;
+        float firePointDistance = 1.5f;
+
+        for (int i = 0; i < projectileCount; i++)
+        {
+            
+            float angleStep = spreadAngle / (projectileCount - 1);
+            float currentAngle = -spreadAngle / 2f + angleStep * i;
+
+            // Calculate the rotated firePoint position (semi-circle arc)
+            Vector3 rotatedFirePoint = transform.position +
+                                       new Vector3(Mathf.Cos(currentAngle * Mathf.Deg2Rad),
+                                                   Mathf.Sin(currentAngle * Mathf.Deg2Rad),
+                                                   0f)
+                                       * firePointDistance;
+
+            // Calculate direction from firePoint to player
+            Vector3 attackDirection = (playerPosition - rotatedFirePoint).normalized;
+
+            // Instantiate and fire the projectile
+            var bullet = Instantiate(bulletPrefab, rotatedFirePoint, Quaternion.identity);
+            bullet.GetComponent<Projectile>().Damage = 1;
+            bullet.GetComponent<Rigidbody2D>().AddForce(attackDirection * fireForce, ForceMode2D.Impulse);
+        }
     }
+
+
+
 
     public void FoundTarget()
     {

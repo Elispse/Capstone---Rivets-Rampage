@@ -220,7 +220,7 @@ public class GameManager : MonoBehaviour
         else if (playerHealth.value >= 0)
         {
             playerUI.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = heartHalf;
-            if (playerHealth.value == 0) playerUI.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = heartEmpty;
+            if (playerHealth.value == 0) playerUI. gameObject.transform.GetChild(0).GetComponent<Image>().sprite = heartEmpty;
         }
     }
 

@@ -48,7 +48,7 @@ public class RoomManager : MonoBehaviour
             }
             for (int i = 0; i < numberOfEnemies; i++)
             {
-                int rand = Random.Range(0, (enemyList.Length - 1));
+                int rand = Random.Range(0, (enemyList.Length));
                 EnemySpawnLocation();
                 GameObject enemy = Instantiate(enemyList[rand], spawnPoint, gameObject.transform.rotation);
                 enemies.Add(enemy);

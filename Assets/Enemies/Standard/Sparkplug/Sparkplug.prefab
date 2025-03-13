@@ -228,6 +228,10 @@ MonoBehaviour:
   health: 10
   pointRadius: 7.5
   healthDrop: {fileID: 597064320736751726, guid: 21c889dec9b8ba749b92ef2af453539a, type: 3}
+  weapon: {fileID: 0}
+  fireForce: 20
+  bulletPrefab: {fileID: 4127108657081254698, guid: 5b090f2805a82d4469283894aa545805, type: 3}
+  firePoint: {fileID: 0}
 --- !u!114 &8979409494521999546
 MonoBehaviour:
   m_ObjectHideFlags: 0

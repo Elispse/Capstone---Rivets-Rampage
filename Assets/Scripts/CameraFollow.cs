@@ -12,11 +12,24 @@ public class CameraFollow : MonoBehaviour
     }
     private void Update()
     {
-        if (!foundTarget)
+        // Find the player if not already assigned or if the previous reference was destroyed
+        if (!foundTarget || followTransform == null)
         {
-            followTransform = FindObjectOfType<PlayerMovement>().transform;
-            foundTarget = true;
+            var player = FindObjectOfType<PlayerMovement>();
+            if (player != null)
+            {
+                followTransform = player.transform;
+                foundTarget = true;
+            }
         }
-        this.transform.position = new Vector3(followTransform.position.x, followTransform.position.y, this.transform.position.z);
+        // Only move the camera if a valid target exists
+        if (followTransform != null)
+        {
+            this.transform.position = new Vector3(
+                followTransform.position.x,
+                followTransform.position.y,
+                this.transform.position.z
+            );
+        }
     }
 }

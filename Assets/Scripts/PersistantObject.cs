@@ -12,13 +12,14 @@ public class PersistentObject : MonoBehaviour
 
     private void Awake()
     {
+        HandleDuplicates();
+
         // Handle EventSystem persistence
         if (TryGetComponent(out EventSystem eventSystem))
         {
-            // If an EventSystem already exists, destroy this one
             if (persistentEventSystem != null)
             {
-                Destroy(gameObject); // Destroy the newly loaded EventSystem
+                Destroy(gameObject);
                 return;
             }
 
@@ -29,10 +30,9 @@ public class PersistentObject : MonoBehaviour
         // Handle Canvas persistence
         if (TryGetComponent(out Canvas canvas))
         {
-            // If a Canvas already exists, destroy this one
             if (persistentCanvas != null)
             {
-                Destroy(gameObject); // Destroy the newly loaded Canvas
+                Destroy(gameObject);
                 return;
             }
 
@@ -46,23 +46,44 @@ public class PersistentObject : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-        // Subscribe to scene loaded event to check when to destroy objects
+        // Subscribe to scene loaded event for cleanup & duplicate checks
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Destroy if the current scene is NOT in the persistent list
+        // First, ensure this object is still valid before running HandleDuplicates
+        if (this == null) return;
+
+        HandleDuplicates(); // Run this first to avoid checking a destroyed object
+
+        // Destroy persistent objects if the scene isn't listed in persistentScenes
         if (!IsScenePersistent(scene.name))
         {
-            if (IsEventSystem())
-                persistentEventSystem = null;  // Clear static reference before destruction
+            if (IsEventSystem()) persistentEventSystem = null;
+            if (IsCanvas()) persistentCanvas = null;
 
-            if (IsCanvas())
-                persistentCanvas = null;  // Clear static reference before destruction
-
-            SceneManager.sceneLoaded -= OnSceneLoaded; // Unsubscribe to avoid memory leaks
+            SceneManager.sceneLoaded -= OnSceneLoaded; // Unsubscribe early
             Destroy(gameObject);
+            return; // Immediately exit to prevent executing further code on a destroyed object
+        }
+    }
+
+
+    private void HandleDuplicates()
+    {
+        // Destroy any duplicates in the scene that lack the PersistentObject script
+        GameObject[] duplicates = FindObjectsOfType<GameObject>();
+
+        foreach (GameObject obj in duplicates)
+        {
+            if (obj != gameObject && obj.name == gameObject.name)
+            {
+                if (!obj.GetComponent<PersistentObject>())
+                {
+                    Destroy(obj); // Destroy duplicate objects without persistence logic
+                }
+            }
         }
     }
 

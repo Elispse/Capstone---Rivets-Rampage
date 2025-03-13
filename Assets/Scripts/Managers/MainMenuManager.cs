@@ -47,14 +47,21 @@ public class MainMenuManager : MonoBehaviour
 
     public void LoadGame()
     {
-        mainScreen.SetActive(false);
-        optionScreen.SetActive(false);
-        creditScreen.SetActive(false);
-        loadingScreen.SetActive(true);
-        sceneToLoad = "Stage2";
-        gameLoaded.value = true;
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.UIClick, this.transform.position);
-        StartCoroutine(LoadSceneASync());
+        if (PlayerPrefs.HasKey("PlayerState"))
+        {
+            mainScreen.SetActive(false);
+            optionScreen.SetActive(false);
+            creditScreen.SetActive(false);
+            loadingScreen.SetActive(true);
+            sceneToLoad = "Stage2"; // Or load the scene saved in the JSON
+            gameLoaded.value = true;
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.UIClick, this.transform.position);
+            StartCoroutine(LoadSceneASync());
+        }
+        else
+        {
+            Debug.Log("No saved game found.");
+        }
     }
 
     public void CreditMenu()
