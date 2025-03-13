@@ -40,7 +40,7 @@ public class BasicAI : MonoBehaviour, IDamagable
         agent.updateUpAxis = false;
         damageFlash = GetComponent<DamageFlash>();
         targetFound = false;
-
+        damageFlash = GetComponent<DamageFlash>();
         enemyFootsteps = AudioManager.instance.CreateInstance(FMODEvents.instance.enemyWalk);
     }
 
@@ -75,7 +75,7 @@ public class BasicAI : MonoBehaviour, IDamagable
         int increment = (int)(finishAngle / segments);
         Vector2 targetPos = Vector2.zero;
         Vector2 endPos;
-        if (animator.GetBool("isWalking"))
+        if (animator.GetBool("IsWalking"))
         {
             if (agent.velocity.x >= 0.75)
             {
@@ -119,7 +119,7 @@ public class BasicAI : MonoBehaviour, IDamagable
 
     private void Follow()
     {
-        animator.SetBool("isWalking", true);
+        animator.SetBool("IsWalking", true);
         agent.SetDestination(target.position);
         animator.SetFloat("CurX", agent.velocity.x);
         animator.SetFloat("CurY", agent.velocity.y);
@@ -130,7 +130,7 @@ public class BasicAI : MonoBehaviour, IDamagable
         if (agent.remainingDistance <= 0.2 && wanderSpot == true)
         {
             StartCoroutine(ResetWanderDestination(8.0f));
-            animator.SetBool("isWalking", false);
+            animator.SetBool("IsWalking", false);
         }
         if (agent.remainingDistance <= 0.3 && agent.remainingDistance != 0)
         {
@@ -160,7 +160,7 @@ public class BasicAI : MonoBehaviour, IDamagable
         {
             agent.SetDestination(randomDirection);
             wanderSpot = true;
-            animator.SetBool("isWalking", true);
+            animator.SetBool("IsWalking", true);
         }
         else
         {
@@ -180,7 +180,7 @@ public class BasicAI : MonoBehaviour, IDamagable
 
     private void UpdateSound()
     {
-        if (animator.GetBool("isWalking") == true)
+        if (animator.GetBool("IsWalking") == true)
         {
             PLAYBACK_STATE playbackState;
             enemyFootsteps.getPlaybackState(out playbackState);
