@@ -1,8 +1,10 @@
 using NavMeshPlus.Components;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -35,8 +37,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private FloatVariable playerHealth;
     [SerializeField] private BoolVariable loadedGame;
+    [SerializeField] private PlayerStateVariable playerStateVariable;
 
     [SerializeField] private VoidEvent destroyAllEnemies;
+    [SerializeField] private VoidEvent gameLoadedEvent;
 
     private GameState state = GameState.START_GAME;
     private RoomComplete roomComplete;
@@ -245,14 +249,47 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void LoadSavedState()
-    {
-        
-    }
-
     public void SaveGameState()
     {
-        
+        PlayerState playerState = new PlayerState
+        {
+            weapons = GetWeaponNames(),
+            health = playerHealth.value,
+            currentScene = SceneManager.GetActiveScene().name
+        };
+
+        string json = JsonUtility.ToJson(playerState);
+        PlayerPrefs.SetString("PlayerState", json);
+        PlayerPrefs.Save();
+        Debug.Log("Game state saved.");
+    }
+
+    public void LoadSavedState()
+    {
+        if (PlayerPrefs.HasKey("PlayerState"))
+        {
+            string json = PlayerPrefs.GetString("PlayerState");
+            PlayerState playerState = JsonUtility.FromJson<PlayerState>(json);
+            playerStateVariable.value = playerState;
+            playerHealth.value = playerState.health;
+            sceneToLoad = playerState.currentScene;
+            gameLoadedEvent.RaiseEvent();
+            Debug.Log("Game state loaded.");
+        }
+        else
+        {
+            Debug.Log("No saved game state found.");
+        }
+    }
+
+    private List<string> GetWeaponNames()
+    {
+        List<string> weaponNames = new List<string>();
+        foreach (GameObject weapon in player.GetComponent<PlayerActions>().weapons)
+        {
+            weaponNames.Add(weapon.name);
+        }
+        return weaponNames;
     }
 
     public void DestroyAllEnemies()
@@ -262,16 +299,19 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("Scene Loaded: " + scene.name);
-        player.transform.position = GameObject.Find("SpawnPoint").transform.position;
-        pauseUI.SetActive(false);
-        loadingUI.SetActive(false);
-        deadUI.SetActive(false);
-        wonUI.SetActive(false);
-        continueUI.SetActive(false);
-        playerUI.SetActive(true);
-        Surface2D.BuildNavMeshAsync();
-        state = GameState.PLAY_GAME;
+        if (scene.name != "MainMenu")
+        {
+            Debug.Log("Scene Loaded: " + scene.name);
+            player.transform.position = GameObject.Find("SpawnPoint").transform.position;
+            pauseUI.SetActive(false);
+            loadingUI.SetActive(false);
+            deadUI.SetActive(false);
+            wonUI.SetActive(false);
+            continueUI.SetActive(false);
+            playerUI.SetActive(true);
+            Surface2D.BuildNavMeshAsync();
+            state = GameState.PLAY_GAME;
+        }
     }
 
     private IEnumerator LoadSceneASync()

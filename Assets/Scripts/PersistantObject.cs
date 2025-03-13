@@ -1,54 +1,66 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PersistentObject : MonoBehaviour
 {
-    // Array of scene names where the GameObject should persist
-    [SerializeField]
-    private string[] persistentScenes;
+    [SerializeField] private string[] persistentScenes;
 
+    // Singleton references for EventSystem and Canvas
     private static EventSystem persistentEventSystem;
     private static Canvas persistentCanvas;
+
     private void Awake()
     {
-        // Check if this object is an EventSystem
+        // Handle EventSystem persistence
         if (TryGetComponent(out EventSystem eventSystem))
         {
-            // Handle EventSystem persistence
-            if (persistentEventSystem != null && persistentEventSystem != eventSystem)
+            // If an EventSystem already exists, destroy this one
+            if (persistentEventSystem != null)
             {
-                Destroy(gameObject); // Destroy duplicate EventSystem
+                Destroy(gameObject); // Destroy the newly loaded EventSystem
                 return;
             }
 
             persistentEventSystem = eventSystem;
             DontDestroyOnLoad(gameObject);
         }
-        else if (TryGetComponent(out Canvas canvas))
+
+        // Handle Canvas persistence
+        if (TryGetComponent(out Canvas canvas))
         {
-            if (persistentCanvas != null && persistentCanvas != canvas)
+            // If a Canvas already exists, destroy this one
+            if (persistentCanvas != null)
             {
-                Destroy(gameObject); // Destroy duplicate Canvas
+                Destroy(gameObject); // Destroy the newly loaded Canvas
                 return;
             }
 
             persistentCanvas = canvas;
             DontDestroyOnLoad(gameObject);
-
-            canvas.sortingOrder = 0;
         }
-        else
+
+        // Handle other general persistent objects
+        if (!eventSystem && !canvas)
         {
             DontDestroyOnLoad(gameObject);
-            SceneManager.sceneLoaded += OnSceneLoaded;
         }
+
+        // Subscribe to scene loaded event to check when to destroy objects
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (!IsEventSystem() && !IsCanvas() && !IsScenePersistent(scene.name))
+        // Destroy if the current scene is NOT in the persistent list
+        if (!IsScenePersistent(scene.name))
         {
+            if (IsEventSystem())
+                persistentEventSystem = null;  // Clear static reference before destruction
+
+            if (IsCanvas())
+                persistentCanvas = null;  // Clear static reference before destruction
+
             SceneManager.sceneLoaded -= OnSceneLoaded; // Unsubscribe to avoid memory leaks
             Destroy(gameObject);
         }
@@ -64,13 +76,6 @@ public class PersistentObject : MonoBehaviour
         return false;
     }
 
-    private bool IsEventSystem()
-    {
-        return GetComponent<EventSystem>() != null;
-    }
-
-    private bool IsCanvas()
-    {
-        return GetComponent<EventSystem>() != null;
-    }
+    private bool IsEventSystem() => GetComponent<EventSystem>() != null;
+    private bool IsCanvas() => GetComponent<Canvas>() != null;
 }

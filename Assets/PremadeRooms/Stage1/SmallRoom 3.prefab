@@ -2094,6 +2094,7 @@ MonoBehaviour:
   endRoomEvent: {fileID: 0}
   enemyList:
   - {fileID: 708485392205921281, guid: 16d195ed89de87945a5795c71825f167, type: 3}
+  - {fileID: 7064455222121794385, guid: 17ad11a9dfb0c5a47b2edfdf7e9088da, type: 3}
   enemies: []
 --- !u!50 &6536742023410035756
 Rigidbody2D:

@@ -8,11 +8,12 @@ using UnityEngine.InputSystem.Interactions;
 
 public class PlayerActions : MonoBehaviour
 {
-    [SerializeField] List<GameObject> weapons;
+    [SerializeField] public  List<GameObject> weapons;
     [SerializeField] private GameObject weaponParent;
     [SerializeField] private WeaponBase weapon;
     [SerializeField] private BoolEvent fireWeaponEvent;
     [SerializeField] private WeaponUI weaponUI;
+    [SerializeField] private PlayerStateVariable playerStateVariable;
     public bool held { get; set; }
     private int weaponNum = 0;
     private GameObject weaponMagSize;
@@ -73,6 +74,11 @@ public class PlayerActions : MonoBehaviour
             //update WeaponUI
             weaponUI.UpdateInfo(weapon.GetComponent<SpriteRenderer>().sprite, weapon.GetComponent<WeaponBase>().magCapacity, weapon.GetComponent<WeaponBase>().ammoCount);
         }
+    }
+
+    public void GameLoaded()
+    {
+
     }
 
     public void Reload(InputAction.CallbackContext context)
