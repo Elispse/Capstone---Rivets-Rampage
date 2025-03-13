@@ -298,9 +298,6 @@ public class Sparkplug : MonoBehaviour, IDamagable
         }
     }
 
-
-
-
     public void FoundTarget()
     {
         targetFound = true;
