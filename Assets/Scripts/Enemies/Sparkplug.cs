@@ -35,9 +35,7 @@ public class Sparkplug : MonoBehaviour, IDamagable
     private bool wanderSpot = true;
     private bool castRay = true;
     private bool isKnockedBack = false;
-    private bool isReload = false;
     private Vector3 playerPosition;
-    private GameObject bullet;
     public bool targetFound { get; set; }
 
     private float nextFireTime = 0f;
@@ -153,7 +151,7 @@ public class Sparkplug : MonoBehaviour, IDamagable
         animator.SetBool("isWalking", true);
 
         float distance = utility.GetDistanceBetweenTwoPoints(transform.position, playerPosition);
-        if (distance <= 5f! & strafing)
+        if (distance <= 5f !& strafing)
         {
             strafing = true;
             Vector3 newDestination = utility.GetRandomPositionAroundObject(GameObject.Find("Player").transform.position, 5, 0, 360);
@@ -274,27 +272,25 @@ public class Sparkplug : MonoBehaviour, IDamagable
         int projectileCount = 5;
         float spreadAngle = 60f;
         float firePointDistance = 1.5f;
+        float bulletSpreadOffset = 0.5f; 
+
+        Vector3 directionToPlayer = (playerPosition - transform.position).normalized;
+
+        Vector3 forwardDirection = directionToPlayer;
 
         for (int i = 0; i < projectileCount; i++)
         {
-            
             float angleStep = spreadAngle / (projectileCount - 1);
             float currentAngle = -spreadAngle / 2f + angleStep * i;
 
-            // Calculate the rotated firePoint position (semi-circle arc)
-            Vector3 rotatedFirePoint = transform.position +
-                                       new Vector3(Mathf.Cos(currentAngle * Mathf.Deg2Rad),
-                                                   Mathf.Sin(currentAngle * Mathf.Deg2Rad),
-                                                   0f)
-                                       * firePointDistance;
+            Vector3 bulletDirection = Quaternion.Euler(0, 0, currentAngle) * forwardDirection;
 
-            // Calculate direction from firePoint to player
-            Vector3 attackDirection = (playerPosition - rotatedFirePoint).normalized;
+            Vector3 firePoint = transform.position + forwardDirection * firePointDistance;
+            firePoint += Quaternion.Euler(0, 0, 90) * forwardDirection * bulletSpreadOffset * (i - (projectileCount - 1) / 2f);
 
-            // Instantiate and fire the projectile
-            var bullet = Instantiate(bulletPrefab, rotatedFirePoint, Quaternion.identity);
-            bullet.GetComponent<Projectile>().Damage = 1;
-            bullet.GetComponent<Rigidbody2D>().AddForce(attackDirection * fireForce, ForceMode2D.Impulse);
+            var bullet = Instantiate(bulletPrefab, firePoint, Quaternion.identity);
+            bullet.GetComponent<EnemyProjectile>().Damage = 1;
+            bullet.GetComponent<Rigidbody2D>().AddForce(bulletDirection * fireForce, ForceMode2D.Impulse);
         }
     }
 

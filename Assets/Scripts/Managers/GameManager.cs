@@ -84,6 +84,9 @@ public class GameManager : MonoBehaviour
                     loadingUI.SetActive(false);
                     playerUI.SetActive(true);
                     playerHealth.value = 6;
+                    playerUI.gameObject.transform.GetChild(2).GetComponent<Image>().sprite = heartFull;
+                    playerUI.gameObject.transform.GetChild(1).GetComponent<Image>().sprite = heartFull;
+                    playerUI.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = heartFull;
                     state = GameState.PLAY_GAME;
                 }
                 break;
@@ -158,6 +161,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         sceneToLoad = "Stage1";
+        state = GameState.START_GAME;
         StartCoroutine(LoadSceneASync());
     }
 
@@ -312,6 +316,10 @@ public class GameManager : MonoBehaviour
             playerUI.SetActive(true);
             Surface2D.BuildNavMeshAsync();
             state = GameState.PLAY_GAME;
+        }
+        if (scene.name == "Stage2")
+        {
+            sceneToLoad = "MainMenu";
         }
     }
 
