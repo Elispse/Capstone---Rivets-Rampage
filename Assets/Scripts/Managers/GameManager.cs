@@ -261,6 +261,7 @@ public class GameManager : MonoBehaviour
         string json = JsonUtility.ToJson(playerState);
         PlayerPrefs.SetString("PlayerState", json);
         PlayerPrefs.Save();
+        MainMenu();
         Debug.Log("Game state saved.");
     }
 

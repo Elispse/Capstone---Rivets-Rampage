@@ -171,6 +171,7 @@ public class BasicAI : MonoBehaviour, IDamagable
     public void ApplyDamage(float damage)
     {
         health -= damage;
+        damageFlash.CallDamageFlash();
         if (health <= 0)
         {
             GenerateDrops();

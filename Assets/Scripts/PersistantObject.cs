@@ -55,8 +55,6 @@ public class PersistentObject : MonoBehaviour
         // First, ensure this object is still valid before running HandleDuplicates
         if (this == null) return;
 
-        HandleDuplicates(); // Run this first to avoid checking a destroyed object
-
         // Destroy persistent objects if the scene isn't listed in persistentScenes
         if (!IsScenePersistent(scene.name))
         {
@@ -66,6 +64,10 @@ public class PersistentObject : MonoBehaviour
             SceneManager.sceneLoaded -= OnSceneLoaded; // Unsubscribe early
             Destroy(gameObject);
             return; // Immediately exit to prevent executing further code on a destroyed object
+        }
+        else
+        {
+            HandleDuplicates(); // Run this first to avoid checking a destroyed object
         }
     }
 
