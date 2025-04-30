@@ -56,7 +56,10 @@ public class PlayerMain : MonoBehaviour, IDamagable, IHealable, IScoreable
         {
             healthVar.value = 6;
         }
-        healEvent.RaiseEvent();
+        for (int i = 0; i < health; i++)
+        {
+            healEvent.RaiseEvent();
+        }
     }
 
     private IEnumerator damageCooldownCR(int numberOfFlashes, float time)

@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
                 loadingUI.SetActive(true);
                 playerUI.SetActive(false);
                 pauseUI.SetActive(false);
+                
                 if (Surface2D.isActiveAndEnabled && roomComplete.generationIsComplete)
                 {
                     player.transform.position = GameObject.Find("SpawnPoint").transform.position;
@@ -91,6 +92,7 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case GameState.PLAY_GAME:
+                onHeal();
                 Time.timeScale = 1;
                 break;
             case GameState.PAUSE_GAME:
