@@ -20,7 +20,7 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out IDamagable damagable)! & collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.TryGetComponent(out IDamagable damagable) !& collision.gameObject.CompareTag("Enemy"))
         {
             damagable.ApplyDamage(Damage);
         }
