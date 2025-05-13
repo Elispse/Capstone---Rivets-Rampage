@@ -97,15 +97,21 @@ public class AudioManager : MonoBehaviour
     private void CleanUp()
     {
         // stop and release any created instances
-        foreach (EventInstance eventInstance in eventInstances)
+        if (eventInstances != null)
         {
-            eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-            eventInstance.release();
+            foreach (EventInstance eventInstance in eventInstances)
+            {
+                eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                eventInstance.release();
+            }
         }
 
-        foreach (StudioEventEmitter emitter in eventEmitters)
+        if (eventEmitters != null)
         {
-            emitter.Stop();
+            foreach (StudioEventEmitter emitter in eventEmitters)
+            {
+                emitter.Stop();
+            }
         }
     }
 
