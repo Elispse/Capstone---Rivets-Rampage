@@ -29,10 +29,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject deadUI;
     [SerializeField] private GameObject continueUI;
 
-    [SerializeField] private Sprite heartFull;
-    [SerializeField] private Sprite heartHalf;
-    [SerializeField] private Sprite heartEmpty;
-
     [SerializeField] private string sceneToLoad;
 
     [SerializeField] private FloatVariable playerHealth;
@@ -41,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private VoidEvent destroyAllEnemies;
     [SerializeField] private VoidEvent gameLoadedEvent;
+    [SerializeField] private VoidEvent gameStartEvent;
 
     private GameState state = GameState.START_GAME;
     private RoomComplete roomComplete;
@@ -85,14 +82,11 @@ public class GameManager : MonoBehaviour
                     loadingUI.SetActive(false);
                     playerUI.SetActive(true);
                     playerHealth.value = 6;
-                    playerUI.gameObject.transform.GetChild(2).GetComponent<Image>().sprite = heartFull;
-                    playerUI.gameObject.transform.GetChild(1).GetComponent<Image>().sprite = heartFull;
-                    playerUI.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = heartFull;
+                    gameStartEvent.RaiseEvent();
                     state = GameState.PLAY_GAME;
                 }
                 break;
             case GameState.PLAY_GAME:
-                onHeal();
                 Time.timeScale = 1;
                 break;
             case GameState.PAUSE_GAME:
@@ -209,50 +203,6 @@ public class GameManager : MonoBehaviour
         loadingUI.SetActive(true);
         continueUI.SetActive(false);
         StartCoroutine(LoadSceneASync());
-    }
-
-    public void LoseHealth()
-    {
-        if (playerHealth.value >= 4)
-        {
-            playerUI.gameObject.transform.GetChild(2).GetComponent<Image>().sprite = heartHalf;
-            if (playerHealth.value == 4) playerUI.gameObject.transform.GetChild(2).GetComponent<Image>().sprite = heartEmpty;
-        }
-        else if (playerHealth.value >= 2)
-        {
-            playerUI.gameObject.transform.GetChild(1).GetComponent<Image>().sprite = heartHalf;
-            if (playerHealth.value == 2) playerUI.gameObject.transform.GetChild(1).GetComponent<Image>().sprite = heartEmpty;
-        }
-        else if (playerHealth.value >= 0)
-        {
-            playerUI.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = heartHalf;
-            if (playerHealth.value == 0) playerUI. gameObject.transform.GetChild(0).GetComponent<Image>().sprite = heartEmpty;
-        }
-    }
-
-    public void onHeal()
-    {
-        switch (playerHealth.value)
-        {
-            case 6:
-                playerUI.gameObject.transform.GetChild(2).GetComponent<Image>().sprite = heartFull;
-                break;
-            case 5:
-                playerUI.gameObject.transform.GetChild(2).GetComponent<Image>().sprite = heartHalf;
-                break;
-            case 4:
-                playerUI.gameObject.transform.GetChild(1).GetComponent<Image>().sprite = heartFull;
-                break;
-            case 3:
-                playerUI.gameObject.transform.GetChild(1).GetComponent<Image>().sprite = heartHalf;
-                break;
-            case 2:
-                playerUI.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = heartFull;
-                break;
-            case 1:
-                playerUI.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = heartHalf;
-                break;
-        }
     }
 
     public void SaveGameState()

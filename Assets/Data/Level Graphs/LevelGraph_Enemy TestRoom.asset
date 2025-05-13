@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7150770009313193781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Position: {x: 352, y: 320}
+  Name: Room
+  IndividualRoomTemplates:
+  - {fileID: 6192943430414626050, guid: 60bdf10f47995c843bdcc0a022de471e, type: 3}
+  RoomTemplateSets: []
+--- !u!114 &-3600426316027243807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Position: {x: 352, y: 240}
+  Name: Room
+  IndividualRoomTemplates:
+  - {fileID: 222655026071207092, guid: 43b36ef98e8f0a446ab7c8f33717eb89, type: 3}
+  RoomTemplateSets: []
+--- !u!114 &-758523491381361611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f692f83df7c1b5468af64edd22287dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: -7150770009313193781}
+  To: {fileID: -3600426316027243807}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8400baee4cafd34091c865089a167b2, type: 3}
+  m_Name: LevelGraph_Enemy TestRoom
+  m_EditorClassIdentifier: 
+  Connections:
+  - {fileID: -758523491381361611}
+  CorridorIndividualRoomTemplates:
+  - {fileID: 5997070204136329801, guid: 681e141fdfff7b44f869f24b78aa9012, type: 3}
+  - {fileID: 1095062830284779841, guid: 662bcc8cdc7506e468bbbddedb61c980, type: 3}
+  CorridorRoomTemplateSets: []
+  DefaultIndividualRoomTemplates:
+  - {fileID: 0}
+  DefaultRoomTemplateSets: []
+  Rooms:
+  - {fileID: -7150770009313193781}
+  - {fileID: -3600426316027243807}
+  EditorData:
+    PanOffset: {x: -2.6666565, y: 0}
+    Zoom: 1
+  RoomType: Edgar.Unity.Room
+  ConnectionType: Edgar.Unity.Connection

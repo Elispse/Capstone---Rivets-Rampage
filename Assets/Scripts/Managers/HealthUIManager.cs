@@ -6,6 +6,7 @@ public class HealthUIManager : MonoBehaviour
 {
     [SerializeField] private GameObject heartPrefab;
     [SerializeField] private FloatVariable playerHealth;
+    [SerializeField] private VoidEvent gameEventStart;
     [SerializeField] List<HealthHeart> hearts = new List<HealthHeart>();
 
     private void Start()

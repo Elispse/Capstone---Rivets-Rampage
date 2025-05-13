@@ -12,13 +12,17 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out IDamagable damagable) !& collision.gameObject.CompareTag("Enemy"))
-        {
-            damagable.ApplyDamage(Damage);
-        }
         if (!collision.gameObject.GetComponent<Collider2D>().isTrigger)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out IDamagable damagable)! & collision.gameObject.CompareTag("Enemy"))
+        {
+            damagable.ApplyDamage(Damage);
         }
     }
 

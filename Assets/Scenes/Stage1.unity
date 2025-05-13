@@ -2643,6 +2643,10 @@ GameObject:
   - component: {fileID: 422359736}
   - component: {fileID: 422359735}
   - component: {fileID: 422359738}
+  - component: {fileID: 422359739}
+  - component: {fileID: 422359740}
+  - component: {fileID: 422359741}
+  - component: {fileID: 422359742}
   m_Layer: 5
   m_Name: HealthUI
   m_TagString: Untagged
@@ -2745,7 +2749,120 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heartPrefab: {fileID: 8815453893596109831, guid: 2ed2c5f2ef4922c47ae7b05aa6a55fa2, type: 3}
   playerHealth: {fileID: 11400000, guid: a5e20c478fc33df4babf08bbc555a02c, type: 2}
+  gameEventStart: {fileID: 0}
   hearts: []
+--- !u!114 &422359739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422359733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4584dc1e5d4f4a14f860c97795383a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: 967f5f49f649a824a9ff0b94d345881b, type: 2}
+  listener:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 422359738}
+        m_TargetAssemblyTypeName: HealthUIManager, Assembly-CSharp
+        m_MethodName: DrawHearts
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &422359740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422359733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4584dc1e5d4f4a14f860c97795383a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: 7c2db44f3cfb8dd4db09b975a77ae112, type: 2}
+  listener:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 422359738}
+        m_TargetAssemblyTypeName: HealthUIManager, Assembly-CSharp
+        m_MethodName: DrawHearts
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &422359741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422359733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4584dc1e5d4f4a14f860c97795383a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: ef24ffafc9aa5344186fdebb7c3599ff, type: 2}
+  listener:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 422359738}
+        m_TargetAssemblyTypeName: HealthUIManager, Assembly-CSharp
+        m_MethodName: DrawHearts
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &422359742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422359733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4584dc1e5d4f4a14f860c97795383a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: 9766479ae1f4f90459efafad119d7173, type: 2}
+  listener:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 422359738}
+        m_TargetAssemblyTypeName: HealthUIManager, Assembly-CSharp
+        m_MethodName: DrawHearts
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &556400835 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 532421233155088011, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
@@ -2784,7 +2901,7 @@ MonoBehaviour:
   version: 4
   EnableDiagnostics: 0
   FixedLevelGraphConfig:
-    LevelGraph: {fileID: 11400000, guid: a5d930a2058e3bd4eba9d8a798280769, type: 2}
+    LevelGraph: {fileID: 11400000, guid: e3383fe25e95af04281ebe819797914c, type: 2}
     UseCorridors: 1
   GeneratorConfig:
     RootGameObject: {fileID: 362784117}
@@ -3809,15 +3926,13 @@ MonoBehaviour:
   wonUI: {fileID: 207014326}
   deadUI: {fileID: 72703552}
   continueUI: {fileID: 556400835}
-  heartFull: {fileID: -2064123705, guid: 61747b6ece4d5df49aae26243d8bd84f, type: 3}
-  heartHalf: {fileID: -148001818, guid: 61747b6ece4d5df49aae26243d8bd84f, type: 3}
-  heartEmpty: {fileID: -915552264, guid: 61747b6ece4d5df49aae26243d8bd84f, type: 3}
   sceneToLoad: Stage2
   playerHealth: {fileID: 11400000, guid: a5e20c478fc33df4babf08bbc555a02c, type: 2}
   loadedGame: {fileID: 11400000, guid: f87cd1dbcf1758f4886bc58a79ab0e22, type: 2}
   playerStateVariable: {fileID: 11400000, guid: dec5ed94dc765474f876b7cd5dbba3db, type: 2}
   destroyAllEnemies: {fileID: 11400000, guid: 24d226c8d82fb2a49a1732dd4ff032f3, type: 2}
-  gameLoadedEvent: {fileID: 0}
+  gameLoadedEvent: {fileID: 11400000, guid: d3cceace6c82a4747b4eba3a023166b5, type: 2}
+  gameStartEvent: {fileID: 11400000, guid: 9766479ae1f4f90459efafad119d7173, type: 2}
 --- !u!4 &2002043223
 Transform:
   m_ObjectHideFlags: 0
@@ -4085,9 +4200,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2002043222}
     - target: {fileID: 3787040616413694923, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787040616413694923, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787040616413694923, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2002043222}
+    - target: {fileID: 3787040616413694923, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 422359738}
+    - target: {fileID: 3787040616413694923, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787040616413694923, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: DrawHearts
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787040616413694923, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: HealthUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787040616413694923, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3795591892374086922, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4133,7 +4276,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2002043222}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6610939543469690380, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
+    - {fileID: 7849979293391768228, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
+    - {fileID: 6572388741186825133, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 533710106397848816, guid: 105ae1dc06b55bf42aca8ff126b524af, type: 3}
       insertIndex: -1
