@@ -62,6 +62,7 @@ public class W_NailGun : WeaponBase
 
     public override IEnumerator ReloadCR()
     {
+        reloadEvent.RaiseEvent(reloadTime);
         isReload = true;
         yield return new WaitForSeconds(reloadTime);
         ammoCount = magCapacity;

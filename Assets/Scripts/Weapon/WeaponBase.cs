@@ -20,6 +20,7 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] public WeaponType weaponType;
     [SerializeField] public int magCapacity;
     [SerializeField] public int ammoCount;
+    [SerializeField] public IntEvent reloadEvent;
 
     public Vector2 PointerPosition { get; set; }
     protected WeaponUI weaponUI;
