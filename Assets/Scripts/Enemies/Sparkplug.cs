@@ -18,7 +18,7 @@ public class Sparkplug : MonoBehaviour, IDamagable
     [SerializeField] private float pointRadius = 10;
     [SerializeField] private GameObject healthDrop;
     [SerializeField] private WeaponBase weapon;
-    [SerializeField, Range(1, 50)] int fireForce = 5;
+    [SerializeField, Range(1, 50)] float fireForce = 2.5f;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform firePoint;
     [SerializeField] private float fireCooldown = 2f;

@@ -24,9 +24,10 @@ public class ReloadBarSlider : MonoBehaviour
         startPos = new Vector2(-38.5f, fillBarRect.anchoredPosition.y);
         endPos   = new Vector2(63.4f, fillBarRect.anchoredPosition.y);
         containerCanvasGrp.alpha = 0;  // start hidden
+
     }
 
-    public void BeginReload(float rTime)
+    public void BeginReload(int rTime)
     {
         reloadTime = rTime;
         timer = 0f;
