@@ -1187,6 +1187,7 @@ MonoBehaviour:
   - {fileID: 1436857002024386458}
   - {fileID: 1850442953679774840}
   roomCompleteEvent: {fileID: 11400000, guid: 850231b871af38c42818701bc2fb4792, type: 2}
+  roomStartEvent: {fileID: 11400000, guid: 502dcec7ec735934c885433f0d723ec5, type: 2}
   endRoomEvent: {fileID: 11400000, guid: b0b89bbb3910cea408763924d2903c3e, type: 2}
   enemyList:
   - {fileID: 708485392205921281, guid: 9e9b47d221d382a43b139acd2b2c2a10, type: 3}
@@ -1272,7 +1273,7 @@ Transform:
   m_GameObject: {fileID: 5512955748084432540}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 9, y: -7.5, z: 0.4247219}
+  m_LocalPosition: {x: 9, y: -7.33, z: 0.4247219}
   m_LocalScale: {x: 1, y: 18, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3337,7 +3338,7 @@ Transform:
   m_GameObject: {fileID: 6764269195845825633}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -3.5, z: 0.4247219}
+  m_LocalPosition: {x: 0.71, y: -3.5, z: 0.4247219}
   m_LocalScale: {x: 1, y: 9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3414,7 +3415,7 @@ Transform:
   m_GameObject: {fileID: 7505162412194314111}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.5, y: -3.5, z: 0.4247219}
+  m_LocalPosition: {x: 17.29, y: -3.5, z: 0.4247219}
   m_LocalScale: {x: 1, y: 9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

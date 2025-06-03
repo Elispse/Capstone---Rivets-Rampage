@@ -1135,7 +1135,7 @@ Transform:
   m_GameObject: {fileID: 4266704200210937687}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1.0006266, y: -1.4888602, z: 0.4247219}
+  m_LocalPosition: {x: 1, y: -1.1, z: 0.4247219}
   m_LocalScale: {x: 1, y: 7.8809495, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1173,7 +1173,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.005171582}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1184,7 +1184,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.89656866}
   m_EdgeRadius: 0
 --- !u!1 &4669795743273473962
 GameObject:
@@ -1212,7 +1212,7 @@ Transform:
   m_GameObject: {fileID: 4669795743273473962}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.4893737, y: -0.48886022, z: 0.4247219}
+  m_LocalPosition: {x: -2.14, y: -0.48886022, z: 0.4247219}
   m_LocalScale: {x: 1, y: 2.9626813, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1250,7 +1250,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.01719597}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1261,7 +1261,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.7454999}
   m_EdgeRadius: 0
 --- !u!1 &4874765725413533981
 GameObject:
@@ -2091,6 +2091,7 @@ MonoBehaviour:
   roomType: 0
   collider2Ds: []
   roomCompleteEvent: {fileID: 11400000, guid: 850231b871af38c42818701bc2fb4792, type: 2}
+  roomStartEvent: {fileID: 11400000, guid: 502dcec7ec735934c885433f0d723ec5, type: 2}
   endRoomEvent: {fileID: 0}
   enemyList:
   - {fileID: 708485392205921281, guid: 16d195ed89de87945a5795c71825f167, type: 3}
@@ -2177,7 +2178,7 @@ Transform:
   m_GameObject: {fileID: 6026144230223485494}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1.4893737, y: 0.53113973, z: 0.4247219}
+  m_LocalPosition: {x: -1.49, y: 0.12, z: 0.4247219}
   m_LocalScale: {x: 1, y: 2.9669707, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2215,7 +2216,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.072118565}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2226,7 +2227,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.85576284}
   m_EdgeRadius: 0
 --- !u!1 &6379954490212816070
 GameObject:
@@ -2374,7 +2375,7 @@ Transform:
   m_GameObject: {fileID: 6631032210580039782}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.510627, y: 0.50113976, z: 0.4247219}
+  m_LocalPosition: {x: 4.12, y: 0.50113976, z: 0.4247219}
   m_LocalScale: {x: 1, y: 3.043867, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2451,7 +2452,7 @@ Transform:
   m_GameObject: {fileID: 7313370332738905209}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 3.5006268, y: 2.5111399, z: 0.4247219}
+  m_LocalPosition: {x: 3.5006268, y: 1.98, z: 0.4247219}
   m_LocalScale: {x: 1, y: 2.9669707, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2489,7 +2490,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.0034341812}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2500,5 +2501,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.7596047}
   m_EdgeRadius: 0

@@ -16,6 +16,7 @@ public class RoomManager : MonoBehaviour
     [SerializeField] public RoomType roomType;
     [SerializeField] private Collider2D[] collider2Ds;
     [SerializeField] private BoolEvent roomCompleteEvent;
+    [SerializeField] private BoolEvent roomStartEvent;
     [SerializeField] private VoidEvent endRoomEvent;
     [SerializeField] private GameObject[] enemyList;
     [SerializeField] private List<GameObject> enemies;
@@ -55,6 +56,7 @@ public class RoomManager : MonoBehaviour
             }
             roomComplete = false;
             roomCompleteEvent.RaiseEvent(false);
+            roomStartEvent.RaiseEvent(true);
             triggerActivated = true;
         }
     }

@@ -1913,6 +1913,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3944049918659295465, guid: c9f8931dc277ee14ea6d0ef2f26c22d9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3046284054640078136}
+    - targetCorrespondingSourceObject: {fileID: 3944049918659295465, guid: c9f8931dc277ee14ea6d0ef2f26c22d9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4687508423849001679}
   m_SourcePrefab: {fileID: 100100000, guid: c9f8931dc277ee14ea6d0ef2f26c22d9, type: 3}
 --- !u!1 &2851157019687277942 stripped
 GameObject:
@@ -1950,6 +1953,34 @@ MonoBehaviour:
       - m_Target: {fileID: 2735533944430121411}
         m_TargetAssemblyTypeName: Door, Assembly-CSharp
         m_MethodName: RoomComplete
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4687508423849001679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2851157019687277942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1089f24cd37f249b1ed7517fad62df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: 502dcec7ec735934c885433f0d723ec5, type: 2}
+  listener:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2735533944430121411}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: RoomStarted
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2030,6 +2061,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3944049918659295465, guid: c9f8931dc277ee14ea6d0ef2f26c22d9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2950099390012553895}
+    - targetCorrespondingSourceObject: {fileID: 3944049918659295465, guid: c9f8931dc277ee14ea6d0ef2f26c22d9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1361045660091813320}
   m_SourcePrefab: {fileID: 100100000, guid: c9f8931dc277ee14ea6d0ef2f26c22d9, type: 3}
 --- !u!1 &896211889674843012 stripped
 GameObject:
@@ -2067,6 +2101,34 @@ MonoBehaviour:
       - m_Target: {fileID: 3953663956462842486}
         m_TargetAssemblyTypeName: Door, Assembly-CSharp
         m_MethodName: RoomComplete
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1361045660091813320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896211889674843012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1089f24cd37f249b1ed7517fad62df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: 502dcec7ec735934c885433f0d723ec5, type: 2}
+  listener:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3953663956462842486}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: RoomStarted
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

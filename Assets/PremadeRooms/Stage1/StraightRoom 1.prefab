@@ -692,7 +692,7 @@ Transform:
   m_GameObject: {fileID: 2436375331275301637}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 3.5006268, y: -5.4788604, z: 0.4247219}
+  m_LocalPosition: {x: 3.5006268, y: -5.1, z: 0.4247219}
   m_LocalScale: {x: 1, y: 2.9669707, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -769,7 +769,7 @@ Transform:
   m_GameObject: {fileID: 2741659873471984070}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 3.5006268, y: 2.2211397, z: 0.4247219}
+  m_LocalPosition: {x: 3.5006268, y: 1.78, z: 0.4247219}
   m_LocalScale: {x: 1, y: 2.9669707, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2081,6 +2081,7 @@ MonoBehaviour:
   - {fileID: 6221042793113480504}
   - {fileID: 5570464312666171680}
   roomCompleteEvent: {fileID: 11400000, guid: 850231b871af38c42818701bc2fb4792, type: 2}
+  roomStartEvent: {fileID: 11400000, guid: 502dcec7ec735934c885433f0d723ec5, type: 2}
   endRoomEvent: {fileID: 0}
   enemyList:
   - {fileID: 7064455222121794385, guid: 17ad11a9dfb0c5a47b2edfdf7e9088da, type: 3}
